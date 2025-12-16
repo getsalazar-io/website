@@ -1,0 +1,109 @@
+---
+import Arrow from "../assets/arrow.svg";
+
+const {
+  step,
+  title,
+  description,
+  subtitle,
+  icon,
+  showArrow = true,
+} = Astro.props;
+
+const highlightText = (text: string) => {
+  return text.replace(/\*\*(.*?)\*\*/g, '<span class="highlight">$1</span>');
+};
+---
+
+<div class="step-wrapper">
+  <p class="step-title">
+    <span class="step-title-number">STEP 0{step}</span>
+    <span class="step-title-name">{title}</span>
+  </p>
+  <div class="step-body">
+    <span class={`step-body-icon pi ${icon}`}></span>
+    <div class="step-body-text">
+      <p class="step-body-description" set:html={highlightText(description)} />
+      <p class="step-body-subtitle" set:html={highlightText(subtitle)} />
+    </div>
+  </div>
+  {showArrow && <Arrow class="step-arrow" />}
+</div>
+
+<style>
+  .step-wrapper {
+    border: 0.5px solid rgba(51, 97, 126, 1);
+    border-radius: 24px;
+    padding: 20px;
+    position: relative;
+    transition: background-color 0.3s ease;
+  }
+
+  .step-wrapper:hover {
+    background-color: rgba(31, 57, 73, 0.8);
+    scale: 1 1.05;
+  }
+
+  .step-title {
+    font-size: 24px;
+    font-weight: 700;
+  }
+
+  .step-title-number {
+    color: rgba(107, 114, 128, 1);
+    transition: color 0.3s ease;
+  }
+
+  .step-wrapper:hover .step-title-number {
+    color: rgba(98, 186, 243, 1);
+  }
+
+  .step-body {
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 20px;
+    min-height: 360px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgba(31, 57, 73, 0.8);
+    transition:
+      background-color 0.3s ease,
+      scale 0.3s ease;
+  }
+
+  .step-wrapper:hover .step-body {
+    background-color: transparent;
+    /* min-height: 380px; */
+  }
+
+  .step-body-icon {
+    font-size: 36px;
+    color: rgba(98, 186, 243, 1);
+    transition: font-size 0.3s ease;
+  }
+
+  .step-wrapper:hover .step-body-icon {
+    font-size: 60px;
+  }
+
+  .step-body-description {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+
+  .step-arrow {
+    position: absolute;
+    right: -25px;
+    top: 50%;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+</style>
+
+<style is:global>
+  .highlight {
+    color: rgba(98, 186, 243, 1);
+  }
+</style>

@@ -1,35 +1,48 @@
 ---
-import Header from '../components/Header.astro';
-import Main from '../components/Main.astro';
-import Footer from '../components/Footer.astro';
-import Layout from '../layouts/default.astro';
-import Button from '../components/Button.astro';
-import { t } from 'i18next'
-
+import Header from "../components/Header.astro";
+import Main from "../components/Main.astro";
+import Footer from "../components/Footer.astro";
+import Layout from "../layouts/default.astro";
+import Button from "../components/Button.astro";
+import { t } from "i18next";
 ---
 
 <Layout>
-	<Header>
-		<Fragment slot="button">
-			<Button title={t('home:button.demo')} id="button-header-book-demo" />
-		</Fragment>
-	</Header>
-	<Main />
-	<Footer />
+  <Header>
+    <Fragment slot="button">
+      <Button title={t("home:button.demo")} id="button-header-book-demo" />
+    </Fragment>
+  </Header>
+  <Main />
+  <Footer />
 </Layout>
 
 <script>
-  const buttonHeaderBookDemo = document.getElementById("button-header-book-demo") as HTMLButtonElement
-  const buttonPresentationBookDemo = document.getElementById("button-presentation-book-demo") as HTMLButtonElement
-  const buttonLearnMore = document.getElementById("button-learn-more") as HTMLButtonElement	
+  const buttonHeaderBookDemo = document.getElementById(
+    "button-header-book-demo"
+  ) as HTMLButtonElement;
+  const buttonPresentationBookDemo = document.getElementById(
+    "button-presentation-book-demo"
+  ) as HTMLButtonElement;
+  const buttonLearnMore = document.getElementById(
+    "button-learn-more"
+  ) as HTMLButtonElement;
 
-  const formContainer= document.getElementById("form-container") as HTMLElement
-		
-	buttonHeaderBookDemo.addEventListener("click", ()=>scrollToContainer(formContainer))
-	buttonPresentationBookDemo.addEventListener("click", ()=>scrollToContainer(formContainer))
-	buttonLearnMore.addEventListener("click", ()=>scrollToContainer(formContainer))
-  
-	function scrollToContainer(containerName: HTMLElement){
-    containerName?.scrollIntoView({behavior: "smooth", block:"center"})
+  const formContainer = document.getElementById(
+    "form-container"
+  ) as HTMLElement;
+
+  buttonHeaderBookDemo.addEventListener("click", () =>
+    scrollToContainer(formContainer)
+  );
+  buttonPresentationBookDemo.addEventListener("click", () =>
+    scrollToContainer(formContainer)
+  );
+  buttonLearnMore.addEventListener("click", () =>
+    scrollToContainer(formContainer)
+  );
+
+  function scrollToContainer(containerName: HTMLElement) {
+    containerName?.scrollIntoView({ behavior: "smooth", block: "center" });
   }
 </script>

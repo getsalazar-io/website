@@ -1,0 +1,56 @@
+---
+import Accordion from "./Accordion.astro";
+import { t } from "i18next";
+
+const faqs = [
+  {
+    title: "section.faq.question.question-1.title",
+    description: "section.faq.question.question-1.description",
+  },
+  {
+    title: "section.faq.question.question-2.title",
+    description: "section.faq.question.question-2.description",
+  },
+  {
+    title: "section.faq.question.question-3.title",
+    description: "section.faq.question.question-3.description",
+  },
+  {
+    title: "section.faq.question.question-4.title",
+    description: "section.faq.question.question-4.description",
+  },
+  {
+    title: "section.faq.question.question-5.title",
+    description: "section.faq.question.question-5.description",
+  },
+];
+---
+
+<div class="wrapper-section-faq">
+  <div class="wrapper">
+    <h2>{t("section.faq.header")}</h2>
+    {
+      faqs.map((faqItem, index) => (
+        <>
+          <Accordion
+            group="faq"
+            title={t(faqItem.title)}
+            description={t(faqItem.description)}
+            defaultOpen={index === 0}
+          />
+          {index < faqs.length - 1 && <hr />}
+        </>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  h2 {
+    margin-bottom: 44px;
+  }
+  hr {
+    border-size: 3px;
+    border-color: rgba(51, 97, 126, 1);
+  }
+</style>

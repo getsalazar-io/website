@@ -1,32 +1,61 @@
 ---
-import Logo from '../assets/logo_salazar.svg';
 import { t } from 'i18next'
+import Logo from '../assets/logo_salazar.svg';
 ---
 
 <header class="header">
-  <div class="wrapper">
     <div class="header-top">
       <div class="logo">
-        <a href="https://www.getsalazar.io" aria-label={t('button.homepage')}>
-          <Logo height={32} width={130} aria-label="Salazar Logo"/>
-        </a>
+        <Logo height={32} width={130}/>
       </div>
-      <slot name="button"/>
+      <p class="header-text">{t('header.text')}</p>
+      <slot name="button" />
     </div>
-  </div>
 </header>
 
 <style>
   header {
-    width:100%;
-    padding-top: 36px;
-    padding-bottom:16px;
+    position: sticky;
+    max-width: 1280px;
+    top: 24px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 2;
+    height: 88px;
+    display: flex;
+    border-radius: 24px;
+    padding: 0 24px;
+    isolation: isolate;
   }
-  .header-top{
+
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(11, 11, 11, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 24px;
+    z-index: -1;
+  }
+
+  .header-top {
+    width: 100%;
     display: flex;
     justify-content: space-between;
-    padding-inline:40px
+    align-items: center;
+    position: relative;
+    z-index: 1;
   }
 
+  .header-text {
+    display: none;
+  }
 
+  @media screen and (min-width:768px){
+    .header-text{
+      display: block;
+    }
+  }
 </style>
