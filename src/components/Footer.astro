@@ -31,6 +31,7 @@ import { t } from "i18next";
           href="https://www.linkedin.com/company/sorint-lab"
           target="_blank"><span class="pi pi-linkedin"></span></a
         >
+
         <a
           class="link"
           href="https://www.instagram.com/sorintlab/"
@@ -40,8 +41,6 @@ import { t } from "i18next";
     </div>
   </div>
 </footer>
-
-<script></script>
 
 <style>
   footer {
@@ -57,15 +56,15 @@ import { t } from "i18next";
       rgba(98, 186, 243, 0.4) 0%,
       rgba(37, 63, 80, 0) 100%
     );
-
     padding-block: 40px;
   }
+
   .footer-wrapper {
     display: flex;
     flex-flow: column;
-    flex-wrap: wrap;
     gap: 40px;
   }
+
   .footer-logo {
     max-width: 274px;
   }
@@ -74,62 +73,79 @@ import { t } from "i18next";
     font-size: 14px;
     line-height: 18.23px;
   }
+
   .footer-policy {
     display: flex;
     flex-flow: column;
     gap: 20px;
   }
+
   .footer-copyright {
+    width: 274px;
     display: flex;
     align-items: center;
     gap: 8px;
   }
+
   .footer-copyright .pi {
     font-size: 14px;
   }
 
+  .link {
+    text-decoration: underline;
+  }
+
   @media screen and (min-width: 768px) {
+    .footer-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "logo logo"
+        "policy copyright";
+      gap: 40px;
+      align-items: center;
+    }
+
+    .footer-logo {
+      grid-area: logo;
+      max-width: 100%;
+    }
+
+    .footer-policy {
+      grid-area: policy;
+      flex-flow: row;
+      justify-self: start;
+    }
+
+    .footer-copyright {
+      grid-area: copyright;
+      justify-self: end;
+      justify-content: end;
+    }
+  }
+
+  @media screen and (min-width: 1440px) {
     .footer-wrapper {
       display: flex;
       flex-flow: row;
-      flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
       gap: 40px;
     }
+
     .footer-logo {
-      width: 100%;
+      width: 274px;
+      max-width: none;
     }
+
     .footer-policy {
-      display: flex;
       flex-flow: row;
       gap: 20px;
     }
+
     .footer-copyright {
-      width: 100%;
-      justify-items: center;
+      width: 274px;
+      justify-content: end;
     }
-  }
-  @media screen and (min-width: 1440px) {
-    .footer-wrapper {
-      justify-content: space-between;
-      align-items: center;
-      flex-flow: row;
-    }
-    .footer-logo {
-      width: 33%;
-    }
-    .footer-policy {
-      display: flex;
-      flex-flow: row;
-      gap: 20px;
-    }
-    .footer-copyright {
-      width: fit-content;
-      justify-items: initial;
-    }
-  }
-  .link {
-    text-decoration: underline;
   }
 </style>

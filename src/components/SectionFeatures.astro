@@ -50,27 +50,48 @@ const cardSolution = [
   .wrapper-section-features {
     padding-block: 40px;
   }
+
   .section-features-content {
     display: flex;
     flex-flow: column;
     gap: 12px;
     margin-bottom: 40px;
   }
+
   h4 {
     color: rgb(var(--highlight));
   }
 
   .wrapper-section-features .step-wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 24px;
     width: 100%;
     margin-bottom: 40px;
-    align-items: center;
+    align-items: start;
   }
-  @media screen and (min-width: 768px) {
+
+  /* Tablet grande */
+  @media screen and (max-width: 1188px) {
     .wrapper-section-features .step-wrapper {
-      flex-wrap: nowrap;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
+
+  /* Tablet */
+  @media screen and (max-width: 768px) {
+    .wrapper-section-features {
+      padding-block: 24px;
+    }
+
+    .section-features-content {
+      margin-bottom: 24px;
+    }
+
+    .wrapper-section-features .step-wrapper {
+      gap: 24px;
+      margin-bottom: 24px;
     }
   }
 </style>

@@ -74,7 +74,6 @@ const highlightText = (text: string) => {
 
   .step-wrapper:hover .step-body {
     background-color: transparent;
-    /* min-height: 380px; */
   }
 
   .step-body-icon {
@@ -93,16 +92,92 @@ const highlightText = (text: string) => {
     margin-bottom: 14px;
   }
 
+  /* Flecha horizontal (desktop) */
   .step-arrow {
     position: absolute;
     right: -25px;
     top: 50%;
+    transform: translateY(-50%);
     opacity: 1;
     transition: opacity 0.3s ease;
   }
 
   .step-body-subtitle {
     color: rgba(235, 235, 235, 1);
+  }
+
+  /* Responsive */
+  @media screen and (max-width: 1188px) {
+    /* Flecha vertical (mobile) */
+    .step-arrow {
+      right: auto;
+      top: auto;
+      bottom: -16px;
+      left: 50%;
+      transform: translateX(-50%) rotate(90deg);
+    }
+
+    .step-body {
+      min-height: auto;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .step-wrapper {
+      padding: 16px;
+      gap: 16px;
+    }
+
+    .step-title {
+      font-size: 20px;
+    }
+
+    .step-body {
+      padding: 16px;
+      margin-top: 16px;
+    }
+
+    .step-body-icon {
+      font-size: 28px;
+    }
+
+    .step-wrapper:hover .step-body-icon {
+      font-size: 48px;
+    }
+
+    .step-body-description {
+      font-size: 16px;
+      margin-bottom: 12px;
+    }
+
+    .step-body-subtitle {
+      font-size: 14px;
+    }
+
+    .step-arrow {
+      bottom: -16px;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .step-title {
+      font-size: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .step-body-icon {
+      font-size: 24px;
+    }
+
+    .step-wrapper:hover .step-body-icon {
+      font-size: 40px;
+    }
+
+    .step-arrow {
+      bottom: -24px;
+    }
   }
 </style>
 

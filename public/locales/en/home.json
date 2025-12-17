@@ -150,6 +150,26 @@
           "description": "Salazar estimates the potential RTO based on the asset's longest full image backup time. It then calculates the RTO for each asset and flags any misalignment with the RTO declared for the corresponding services."
         }
       }
+    },
+    "carousel": {
+      "items": {
+        "item-1": {
+          "legend": "RPO Distribution",
+          "tooltip": "Check how your Services RPO performs"
+        },
+        "item-2": {
+          "legend": "Service Group Economic Overview",
+          "tooltip": "Give value and knowing the economic impact"
+        },
+        "item-3": {
+          "legend": "General Overview",
+          "tooltip": "A fast glance over any issue"
+        },
+        "item-4": {
+          "legend": "Service RPO Details",
+          "tooltip": "Up-to-date information from your assets"
+        }
+      }
     }
   },
   "footer": {

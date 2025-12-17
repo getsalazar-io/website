@@ -1,72 +1,76 @@
 ---
-import { Trans } from 'astro-i18next/components';
-import Button from './Button.astro'
-import { t } from 'i18next'
-
+import { Trans } from "astro-i18next/components";
+import Button from "./Button.astro";
+import { t } from "i18next";
 ---
+
 <div class="section-hero">
   <div class="wrapper">
     <div class="hero-content">
-      <h1>{t('section.hero.header')}</h1>
-      <h2>{t('section.hero.subheader')}</h2>
-      <p>
+      <h1>{t("section.hero.header")}</h1>
+      <h2>{t("section.hero.subheader")}</h2>
+      <!-- <p>
         <Trans i18nKey="section.hero.paragraph">
           <span></span><span></span>
         </Trans>
-      </p>
+      </p> -->
     </div>
     <div class="hero-image-wrapper">
       <div class="hero-image">
-        <img src="/images/img_Hero_MockScreens2x_202509-min.png" alt={t('section.hero.alt-text')}/>  
+        <img
+          src="/images/img_Hero_MockScreens2x_202509-min.png"
+          alt={t("section.hero.alt-text")}
+        />
       </div>
     </div>
   </div>
 </div>
 
 <style>
-  .section-hero{
+  .section-hero {
     margin: auto;
     display: flex;
     flex-flow: column;
-    gap:40px;
+    gap: 40px;
     margin-block: 40px;
     text-align: center;
   }
-  .hero-content{
+  .hero-content {
     display: flex;
     flex-flow: column;
     gap: 16px;
   }
-  
-  h2{
+
+  h2 {
     font-size: 28px;
     line-height: 31px;
   }
 
-  p>span{
+  p > span {
     font-weight: 700;
   }
-  
-  .hero-content, .hero-image-wrapper{
+
+  .hero-content,
+  .hero-image-wrapper {
     margin: auto;
     margin-top: 40px;
     text-align: center;
   }
-  .hero-image-wrapper{
-    width:100%;
+  .hero-image-wrapper {
+    width: 100%;
     height: auto;
-    margin-top: 40px;    
+    margin-top: 40px;
   }
-  .hero-image{
-    padding-inline:12px;
+  .hero-image {
+    padding-inline: 12px;
   }
 
-  p{
+  p {
     white-space: break-spaces;
   }
 
-  @media screen and (min-width:1440px){
-    .hero-image-wrapper{
+  @media screen and (min-width: 1440px) {
+    .hero-image-wrapper {
       padding-inline: 107px;
     }
   }
