@@ -1,156 +1,76 @@
 ---
-import Card from "./Card.astro"
-import { t } from 'i18next'
+import Step from "./Step.astro";
+import { t } from "i18next";
 
-const cardFeatures =  [
+const cardSolution = [
   {
-    cardId:'card-features-1',
-    cardIcon:'pi-sitemap',
-    cardHeader:'section.features.card.card-1.header',
-    cardDescription:'section.features.card.card-1.paragraph',
+    title: "section.features.card.card-1.title",
+    icon: "pi-link",
+    description: "section.features.card.card-1.description",
+    subtitle: "section.features.card.card-1.subtitle",
   },
   {
-    cardId:'card-features-2',
-    cardIcon:'pi-chart-line',
-    cardHeader:'section.features.card.card-2.header',
-    cardDescription:'section.features.card.card-2.paragraph',
+    title: "section.features.card.card-2.title",
+    icon: "pi-sitemap",
+    description: "section.features.card.card-2.description",
+    subtitle: "section.features.card.card-2.subtitle",
   },
   {
-    cardId:'card-features-3',
-    cardIcon:'pi-check-circle',
-    cardHeader:'section.features.card.card-3.header',
-    cardDescription:'section.features.card.card-3.paragraph',
+    title: "section.features.card.card-3.title",
+    icon: "pi-eye",
+    description: "section.features.card.card-3.description",
+    subtitle: "section.features.card.card-3.subtitle",
   },
-  {
-    cardId:'card-features-4',
-    cardIcon:'pi-wrench',
-    cardHeader:'section.features.card.card-4.header',
-    cardDescription:'section.features.card.card-4.paragraph',
-  },
-  {
-    cardId:'card-features-5',
-    cardIcon:'pi-history',
-    cardHeader:'section.features.card.card-5.header',
-    cardDescription:'section.features.card.card-5.paragraph',
-  },
-  {
-    cardId:'card-features-6',
-    cardIcon:'pi-users',
-    cardHeader:'section.features.card.card-6.header',
-    cardDescription:'section.features.card.card-6.paragraph',
-  },
-]
-
-const cardGroupTitles = [
-  'section.features.group.title.group-1',
-  'section.features.group.title.group-2',
-  'section.features.group.title.group-3'
-]
-
-// Group by 2 elements
-function chunkArray<T>(array: T[], size = 2): T[][] {
-  const out: T[][] = [];
-  for (let i = 0; i < array.length; i += size) {
-    out.push(array.slice(i, i + size));
-  }
-  return out;
-}
-
-const groups = chunkArray(cardFeatures, 2);
+];
 ---
-<div class="wrapper-section-features" id="features-container">
+
+<div class="wrapper-section-features">
   <div class="wrapper">
     <div class="section-features-content">
-      <h2 class="section-features-content-header">{t('section.features.header')}</h2>
-      <h2 class="section-features-content-subheader">{t('section.features.subheader')}</h2>
-      <p>{t('section.features.paragraph')}</p>
+      <h2>{t("section.features.header")}</h2>
     </div>
-    <div class="card-wrapper">
-      {groups.map((groupOfCards, index) => (
-        <div class="panel" >
-          <h3>{t(cardGroupTitles[index])}</h3>
-          {groupOfCards.map((cardItem) => (
-            <Card
-              class="card"
-              cardId={cardItem.cardId}
-              cardHeader={t(cardItem.cardHeader)}
-              cardDescription={t(cardItem.cardDescription)}
-              >
-              <div slot="card-icon" class="card-icon" >
-                <i class={`pi ${cardItem.cardIcon}`}></i>
-              </div>
-            </Card>
-            )
-          )}
-        </div>
-      ))}
+    <div class="step-wrapper">
+      {
+        cardSolution.map((cardItem, index) => (
+          <Step
+            step={index + 1}
+            title={t(cardItem.title)}
+            icon={cardItem.icon}
+            description={t(cardItem.description)}
+            subtitle={t(cardItem.subtitle)}
+            showArrow={index < cardSolution.length - 1}
+          />
+        ))
+      }
     </div>
   </div>
 </div>
 
 <style>
-  .wrapper-section-features{
-    margin-block: 40px;
+  .wrapper-section-features {
+    padding-block: 40px;
   }
-  .section-features-content{
+  .section-features-content {
     display: flex;
     flex-flow: column;
-    gap: 8px;
-    padding-bottom:40px;
+    gap: 12px;
+    margin-bottom: 40px;
   }
-  .section-features-content-header{
-    font-size: 24px;
-    line-height: 31.25px;
-    font-weight: 300;
+  h4 {
     color: rgb(var(--highlight));
-    text-transform: uppercase;
   }
 
-  .section-features-content-subheader{
-    letter-spacing: 2px;
-  }
-
-  .wrapper-section-features .card-wrapper{
+  .wrapper-section-features .step-wrapper {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 24px;
-    padding: 16px;
-  }
-
-  .panel {
-    border: 3px solid #33617E;
-    backdrop-filter: blur(10px);
-    border-radius: 24px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    
-  }
-
-  .panel:hover {
-    transform: scale(1.05);
-    background-color: #1B303D;
-    transition: all 0.3s ease-out;
-    border-radius: var(--rounded-3xl, 1.5rem);
-    backdrop-filter: blur(10px);
-  }
-
-  .card{
-    min-height:169px;
-    min-width: 213px;
     width: 100%;
-    gap: 16px;
+    margin-bottom: 40px;
+    align-items: center;
   }
-  .card-icon{
-    font-size: 36px;
-    color: rgb(var(--highlight));
-  }
-
-  @media screen and (min-width:1440px){
-    .wrapper-section-features .card-wrapper{
-      grid-template-columns: repeat(3, 1fr);
+  @media screen and (min-width: 768px) {
+    .wrapper-section-features .step-wrapper {
+      flex-wrap: nowrap;
     }
   }
 </style>
-

@@ -13,6 +13,9 @@
     "previous": "Previous",
     "next": "Next"
   },
+  "header": {
+    "text": "The missing link between backup and business resilience"
+  },
   "section": {
     "hero": {
       "header": "Everything starts with Salazar",
@@ -21,11 +24,8 @@
       "alt-text": "Some mocks of the Salazar app"
     },
     "presentation": {
-      "header": "From data to decisions",
-      "subheader": "Governance made visible",
-      "paragraph1": "Salazar organises your backup assets into services, revealing the true resilience of your organisation.",
-      "paragraph2": "From backup operators to service managers and auditors, Salazar empowers every role with the insights needed to govern, improve, and assess the impact on IT operations.",
-      "paragraph3": "It's the smart layer between your backup systems and your business priorities—<1>aligning IT operations with business goals,</1> enabling more efficient, secure decision-making, and supporting enterprise risk management strategies."
+      "header": "Is compliance draining your team's time",
+      "subheader": "Governance and Compliance made visible"
     },
     "challenge": {
       "header": "Overcoming the challenges of IT management",
@@ -102,40 +102,22 @@
       }
     },
     "features": {
-      "header": "from features to impact",
-      "subheader": "Operational clarity for resilient decisions",
-      "paragraph": "Whether you're a lean IT team managing global infrastructure or a large organization aiming for full compliance, Salazar gives you enterprise-grade visibility without the complexity.",
-      "group": {
-        "title": {
-          "group-1": "Visibility & Control",
-          "group-2": "Compliance & Reporting",
-          "group-3": "Integration & Access"
-        }
-      },
+      "header": "How Salazar does it",
       "card": {
         "card-1": {
-          "header": "Central Infrastructure View",
-          "paragraph": "Centralize domains, policies, and assets for full transparency"
+          "title": "CONNECT",
+          "description": "Seamlessly ingest metadata from backup systems such as **NetBackup**, **Commvault**, **Cohesity**, **Veeam**, snapshots and business services definitions from **CMDB**s via **secure API**s.",
+          "subtitle": "Connector-first, agentless approach that consolidates backup signals without touching production workloads."
         },
         "card-2": {
-          "header": "Services Management",
-          "paragraph": "Group and manage assets by business service to align IT with business priorities."
+          "title": "MAP",
+          "description": "Translate raw assets into **business services** — applications, dependencies and recovery chains — so you see **recoverability** where the business lives.",
+          "subtitle": "Automatic dependency mapping and visual service models give you the service-level context you need."
         },
         "card-3": {
-          "header": "Backup Compliance",
-          "paragraph": "Track and enforce RPO/RTO targets in real time across environments."
-        },
-        "card-4": {
-          "header": "Custom Reporting",
-          "paragraph": "Generate tailored reports for operations, audit, or business stakeholders."
-        },
-        "card-5": {
-          "header": "Seamless Integration",
-          "paragraph": "Works with NetBackup, Commvault, Cohesity, and other major platforms."
-        },
-        "card-6": {
-          "header": "Role-Based Access Control",
-          "paragraph": "Deliver tailored views for admins, auditors, and business users."
+          "title": "GOVERN",
+          "description": "**Continuously validate** protection quality, ensure policy alignment, and keep your backup posture **compliant** and **accountable**.",
+          "subtitle": "Actionable governance with continuous monitoring, clear compliance reports, and integrations with ticketing and automation tools."
         }
       }
     },
@@ -143,13 +125,38 @@
       "header": "Ready to Get Started?",
       "subheader": "Whether you're a lean IT team managing global infrastructure or a large organization aiming for full compliance, Salazar gives you enterprise-grade visibility without the complexity. ",
       "paragraph": "Don't wait for the next audit—or outage. \nStart governing your backup strategy today."
+    },
+    "faq": {
+      "header": "FAQ",
+      "question": {
+        "question-1": {
+          "title": "Does Salazar replace my backup solution?",
+          "description": "Salazar is a Governance and Risk Management tool that shows current recoverability level of the organization unifying RPO/RTO from different backup systems."
+        },
+        "question-2": {
+          "title": "Can Salazar trigger remediation?",
+          "description": "Salazar doesn't remediate, it exposes gaps through APIs. ITSM tools can easily integrate and take actions."
+        },
+        "question-3": {
+          "title": "Does it support multiple backup vendors?",
+          "description": "Yes. Salazar support several backup software vendors allowing to add new data sources, backup systems, etc.."
+        },
+        "question-4": {
+          "title": "Does it assess replication?",
+          "description": "Not today. Salazar focuses on recoverability from backups—the last‑resort foundation for recovery."
+        },
+        "question-5": {
+          "title": "How does it handle RTO?",
+          "description": "Salazar estimates the potential RTO based on the asset's longest full image backup time. It then calculates the RTO for each asset and flags any misalignment with the RTO declared for the corresponding services."
+        }
+      }
     }
   },
   "footer": {
-    "payoff": "The missing link between backup & business resilience",
-    "cookie": "Cookie Policy",
-    "privacy": "Privacy Policy",
-    "site": "SORINT.lab @ 2025",
-    "disclaimer": "All rights reserved."
+    "payoff": "SORINT.lab @ 2025. All rights reserved.",
+    "cookie": "Cookies",
+    "privacy": "Privacy",
+    "aboutUs": "About Us",
+    "followUs": "Follow Us on"
   }
 }

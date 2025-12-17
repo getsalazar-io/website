@@ -1,10 +1,12 @@
 ---
-import Presentation from './SectionPresentation.astro';
-import Challenges from './SectionChallenges.astro';
-import Features from './SectionFeatures.astro';
-import Form from './SectionForm.astro';
-import Hero from './SectionHero.astro';
+import Presentation from "./SectionPresentation.astro";
+import Challenges from "./SectionChallenges.astro";
+import Features from "./SectionFeatures.astro";
+import Form from "./SectionForm.astro";
+import Hero from "./SectionHero.astro";
+import Faq from "./SectionFAQ.astro";
 ---
+
 <main>
   <section class="main-section-hero">
     <Hero />
@@ -14,27 +16,31 @@ import Hero from './SectionHero.astro';
   </section>
   <section class="main-section-features">
     <Features />
-  </section> 
+  </section>
   <section class="main-section-challenges">
     <Challenges />
-  </section> 
+  </section>
+  <section class="main-section-faq">
+    <Faq />
+  </section>
   <section class="main-section-form">
     <Form />
   </section>
 </main>
 
 <style>
-  main{
+  main {
     display: flex;
     flex-flow: column;
     gap: 80px;
     width: 100%;
   }
-  .main-section-hero{
+  .main-section-hero {
     position: relative;
     z-index: 0;
+    height: calc(100vh - 90px);
   }
-  .main-section-hero::after{
+  .main-section-hero::after {
     display: block;
     content: "";
     position: absolute;
@@ -43,46 +49,34 @@ import Hero from './SectionHero.astro';
     width: 100%;
     height: 568px;
     margin-top: 40px;
-    background: linear-gradient(
-      to bottom,
-    rgba(11, 11, 11, 0) 0%,    
-    rgba(11, 11, 11, 0) 80%,  
-    rgba(11, 11, 11, 0.6) 100%   
-    ), url('/images/bgImg_Hero_DarkDeath2x.png'); 
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(11, 11, 11, 0) 0%,
+        rgba(11, 11, 11, 0) 80%,
+        rgba(11, 11, 11, 0.6) 100%
+      ),
+      url("/images/bgImg_Hero_DarkDeath2x.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center 1%;
     z-index: -1;
   }
 
-  .main-section-features{
+  .main-section-features {
+    background: linear-gradient(
+      190.39deg,
+      rgba(11, 11, 11, 0.2) 28.3%,
+      rgba(76, 167, 223, 0.2) 48.66%,
+      rgba(11, 11, 11, 0.2) 71.03%
+    );
+  }
+
+  .main-section-challenges {
     position: relative;
   }
 
-  .main-section-features::after{
-    display: block;
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 730px;
-    background: linear-gradient(
-      190deg, 
-      rgba(11, 11, 11, 0.20) 28.3%, 
-      rgba(76, 167, 223, 0.20) 48.66%, 
-      rgba(11, 11, 11, 0.20) 71.03%);
-    backdrop-filter: blur(15px);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center 3%;
-    z-index: -1;
-  }
- 
-  .main-section-challenges{
-    position: relative;
-  }
-  .main-section-challenges::after{
+  .main-section-challenges::after {
     display: block;
     content: "";
     position: absolute;
@@ -90,36 +84,48 @@ import Hero from './SectionHero.astro';
     left: 0;
     width: 100%;
     height: 760px;
-    background:linear-gradient(
-      rgba(11,11,11,100),
-      #00000080 25% 50%,
-      rgba(11,11,11,100)),
+    background:
+      linear-gradient(
+        rgba(11, 11, 11, 100),
+        #00000080 25% 50%,
+        rgba(11, 11, 11, 100)
+      ),
       url(/images/bgSection_Challenges.png);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center 3%;
     z-index: -1;
   }
-  .main-section-presentation{
+
+  .main-section-presentation {
     background: linear-gradient(
-      0deg,
-      #62baf300 7%,
-      #62baf333 31%,
-      #62baf340 55%,
-      #62baf333 65%,
-      #62baf300 101%
-      )
+      180deg,
+      rgba(11, 11, 11, 0.2) 10.08%,
+      rgba(76, 167, 223, 0.2) 43.35%,
+      rgba(11, 11, 11, 0.2) 79.9%
+    );
   }
-  .main-section-form{
-    background: url('/images/bgImg_Hero_DarkDeath2x.png');
+
+  .main-section-form {
+    background: url("/images/bgImg_Hero_DarkDeath2x.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center top;
     transition: all 350ms ease-in-out;
   }
-  @media screen and (min-width:1440px){
-    .main-section-form{
-    background-position: calc(50% - 200px) center;
+
+  .main-section-faq {
+    background: linear-gradient(
+      187.39deg,
+      rgba(11, 11, 11, 0.2) 28.3%,
+      rgba(76, 167, 223, 0.2) 48.66%,
+      rgba(11, 11, 11, 0.2) 71.03%
+    );
   }
+
+  @media screen and (min-width: 1440px) {
+    .main-section-form {
+      background-position: calc(50% - 200px) center;
+    }
   }
 </style>
