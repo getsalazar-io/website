@@ -1,0 +1,294 @@
+---
+export interface CarouselItem {
+  legend: string;
+  img: string;
+  tooltip: string;
+  imgClass?: string;
+  legendPosition: string;
+}
+
+interface Props {
+  items: CarouselItem[];
+  speed?: number;
+  class?: string;
+}
+
+const { items, speed = 60, class: className = "" } = Astro.props;
+
+const triplicatedItems = [...items, ...items, ...items];
+---
+
+<div class={`infinite-carousel ${className}`}>
+  <div class="carousel-track" data-speed={speed}>
+    {
+      triplicatedItems.map((item, index) => (
+        <div
+          class={`carousel-item item-${item.legendPosition}`}
+          data-tooltip={item.tooltip}
+          data-item-id={index}
+        >
+          <img src={item.img} alt={item.legend} class={item.imgClass} />
+          <p 
+            class="item-legend" 
+            data-index={`item-${index}`}
+            data-position={item.legendPosition}
+          >
+            {item.legend} <span class="pi pi-plus-circle" />
+            <span class="tooltip">{item.tooltip}</span>
+          </p>
+        </div>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+  .infinite-carousel {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    padding: 2rem 0;
+  }
+
+  .carousel-track {
+    display: flex;
+    gap: 24px;
+    width: fit-content;
+  }
+
+  .item-legend {
+    background-color: #212529;
+    border: 1px solid #4b5563;
+    border-radius: 16px;
+    height: 26px;
+    padding: 4px 8px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #f3f4f6;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    width: fit-content;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s ease;
+  }
+
+  .item-legend:hover {
+    background-color: #2d3439;
+  }
+
+  .item-legend:active {
+    background-color: #1a1d20;
+  }
+
+  .carousel-item {
+    position: relative;
+    flex-shrink: 0;
+    width: 400px;
+    height: 450px;
+    display: flex;
+    gap: 0.5rem;
+    padding: 1rem;
+    border: 1px solid #33617e;
+    border-radius: 24px;
+    transition: transform 0.3s linear;
+  }
+
+  .item-top {
+    flex-direction: column-reverse;
+    justify-content: start;
+    align-items: end;
+  }
+
+  .item-bottom {
+    flex-direction: column;
+    justify-content: end;
+  }
+
+  .carousel-item img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+    position: absolute;
+  }
+
+  .tooltip {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    background: #4B5563;
+    color: #F3F4F6;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 0.3s ease,
+      visibility 0.3s ease;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .item-legend[data-position="top"] .tooltip {
+    bottom: 100%;
+    transform: translateX(-50%) translateY(-8px);
+  }
+
+  .item-legend[data-position="top"] .tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #4B5563;
+  }
+
+  .item-legend[data-position="bottom"] .tooltip {
+    top: 100%;
+    transform: translateX(-50%) translateY(8px);
+  }
+
+  .item-legend[data-position="bottom"] .tooltip::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-bottom-color: #4B5563;
+  }
+
+  .item-legend.active .tooltip {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .img-1 {
+    bottom: 20px;
+  }
+
+  .img-2 {
+    top: -10px;
+    left: -10px;
+  }
+
+  .img-3 {
+    top: 85px;
+    right: -5px;
+    scale: 1.075
+  }
+
+  .img-4 {
+    top: 0;
+    left: -5px;
+    scale: 0.95
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const carousel = document.querySelector(".infinite-carousel");
+    const track = carousel?.querySelector(".carousel-track") as HTMLElement;
+    
+    if (!track) return;
+
+    const speed = parseFloat(track.getAttribute("data-speed") || "60");
+    const pixelsPerSecond = 60;
+    const frameRate = 60;
+    const pixelsPerFrame = pixelsPerSecond / frameRate;
+    
+    let currentOffset = 0;
+    let animationId: number;
+    let isPaused = false;
+
+    const animate = () => {
+      if (!isPaused) {
+        currentOffset += pixelsPerFrame;
+        track.style.transform = `translateX(-${currentOffset}px)`;
+        checkAndRecycleFirstItem();
+      }
+      
+      animationId = requestAnimationFrame(animate);
+    };
+
+    const checkAndRecycleFirstItem = () => {
+      const firstItem = track.firstElementChild as HTMLElement;
+      if (!firstItem) return;
+
+      const itemWidth = firstItem.offsetWidth;
+      const gap = 24;
+      const totalItemWidth = itemWidth + gap;
+
+      if (currentOffset >= totalItemWidth) {
+        const clone = firstItem.cloneNode(true) as HTMLElement;
+        
+        track.removeChild(firstItem);
+        
+        track.appendChild(clone);
+        
+        currentOffset -= totalItemWidth;
+        track.style.transform = `translateX(-${currentOffset}px)`;
+
+        setupTooltipListeners();
+      }
+    };
+
+    const setupTooltipListeners = () => {
+      const legends = track.querySelectorAll(".item-legend");
+      
+      legends.forEach((legend) => {
+        const newLegend = legend.cloneNode(true);
+        legend.parentNode?.replaceChild(newLegend, legend);
+      });
+
+      const newLegends = track.querySelectorAll(".item-legend");
+      
+      newLegends.forEach((legend) => {
+        legend.addEventListener("click", (e) => {
+          e.stopPropagation();
+          
+          newLegends.forEach((l) => {
+            if (l !== legend) {
+              l.classList.remove("active");
+            }
+          });
+          
+          legend.classList.toggle("active");
+        });
+      });
+    };
+
+    const closeAllTooltips = () => {
+      const legends = track.querySelectorAll(".item-legend");
+      legends.forEach((legend) => {
+        legend.classList.remove("active");
+      });
+    };
+
+    track.addEventListener("mouseenter", () => {
+      isPaused = true;
+    });
+
+    track.addEventListener("mouseleave", () => {
+      isPaused = false;
+      closeAllTooltips();
+    });
+
+    document.addEventListener("click", closeAllTooltips);
+
+    setupTooltipListeners();
+
+    animate();
+
+    return () => {
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+    };
+  });
+</script>
