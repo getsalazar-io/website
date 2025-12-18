@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+
+Disallow: /_astro/
+Disallow: /node_modules/
+
+Disallow: /*.json$
+Disallow: /*.config.js$
+Disallow: /*.config.mjs$
+
+Allow: /policy
+Allow: /cookie
+
+Disallow: /*?utm_*
+Disallow: /*?fbclid=*
+Disallow: /*&utm_*
+Disallow: /*&fbclid=*
+
+User-agent: Googlebot
+Allow: /
+
+Sitemap: https://getsalazar.io/sitemap.xml
