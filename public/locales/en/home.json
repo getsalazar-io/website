@@ -122,8 +122,7 @@
       }
     },
     "form": {
-      "header": "Ready to Get Started?",
-      "subheader": "Whether you're a lean IT team managing global infrastructure or a large organization aiming for full compliance, Salazar gives you enterprise-grade visibility without the complexity. ",
+      "header": "See it in action",
       "paragraph": "Don't wait for the next audit—or outage. \nStart governing your backup strategy today."
     },
     "faq": {
@@ -154,21 +153,40 @@
     "carousel": {
       "items": {
         "item-1": {
-          "legend": "RPO Distribution",
-          "tooltip": "Check how your Services RPO performs"
-        },
-        "item-2": {
-          "legend": "Service Group Economic Overview",
-          "tooltip": "Give value and knowing the economic impact"
-        },
-        "item-3": {
           "legend": "General Overview",
           "tooltip": "A fast glance over any issue"
         },
-        "item-4": {
+        "item-2": {
+          "legend": "RPO Distribution",
+          "tooltip": "Check how your Services RPO performs"
+        },
+        "item-3": {
           "legend": "Service RPO Details",
           "tooltip": "Up-to-date information from your assets"
+        },
+        "item-4": {
+          "legend": "Service Group Economic Overview",
+          "tooltip": "Give value and knowing the economic impact"
+        },
+        "item-5": {
+          "legend": "Economic Overview",
+          "tooltip": "Know your services by value"
+        },
+        "item-6": {
+          "legend": "Service RTO details",
+          "tooltip": "Recovery time objective always under sight"
         }
+      }
+    },
+    "capabilities": {
+      "header": "Enterprise-grade capabilities",
+      "list": {
+        "capability-1": "Role-Based Access Control (RBAC)",
+        "capability-2": "Customizable reporting engine",
+        "capability-3": "API-first architecture",
+        "capability-4": "Single Sign-On (SSO)",
+        "capability-5": "Full audit logging",
+        "capability-6": "Exportable executive summaries"
       }
     }
   },

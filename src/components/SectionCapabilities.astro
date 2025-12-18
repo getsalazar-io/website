@@ -1,0 +1,92 @@
+---
+import { t } from "i18next";
+---
+
+<div class="wrapper-section-capabilities">
+  <div class="wrapper">
+    <div class="section-capabilities-content">
+      <h2>{t("section.capabilities.header")}</h2>
+      <div class="capabilities-wrapper">
+        <div class="capability">
+          <span class="pi pi-users"></span>
+          <span>{t("section.capabilities.list.capability-1")}</span>
+        </div>
+        <div class="capability">
+          <span class="pi pi-sliders-h"></span>
+          <span>{t("section.capabilities.list.capability-2")}</span>
+        </div>
+        <div class="capability">
+          <span class="pi pi-microchip"></span>
+          <span>{t("section.capabilities.list.capability-3")}</span>
+        </div>
+        <div class="capability">
+          <span class="pi pi-key"></span>
+          <span>{t("section.capabilities.list.capability-4")}</span>
+        </div>
+        <div class="capability">
+          <span class="pi pi-check-circle"></span>
+          <span>{t("section.capabilities.list.capability-5")}</span>
+        </div>
+        <div class="capability">
+          <span class="pi pi-file-pdf"></span>
+          <span>{t("section.capabilities.list.capability-6")}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .wrapper-section-capabilities {
+    text-align: center;
+    padding-top: 40px;
+  }
+
+  .capabilities-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    width: 100%;
+    background: #33617e1a;
+    border-radius: 24px;
+    padding: 24px;
+    margin-top: 40px;
+  }
+
+  .capabilities-wrapper::before {
+    backdrop-filter: blur(4px);
+  }
+
+  .capability {
+    background: #1f3949cc;
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: start;
+  }
+
+  .capability span {
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .capability .pi {
+    font-size: 36px;
+    color: #62baf3;
+    font-weight: 400;
+  }
+
+  @media screen and (max-width: 1188px) {
+    .capabilities-wrapper {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .capabilities-wrapper {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

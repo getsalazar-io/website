@@ -1,152 +1,195 @@
 ---
-import 'primeicons/primeicons.css'
+import "primeicons/primeicons.css";
 import { t } from "i18next";
 import { HeadHrefLangs } from "astro-i18next/components";
-
 ---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<!-- Google Tag Manager -->
-		<script>
-		(
-			function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-			}
-		)(window,document,'script','dataLayer','GTM-ND7HKQ76');
-		</script>
-		<!-- End Google Tag Manager -->
-		<title>{t('salazar.title')}</title>
-	</head>
-	<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != "dataLayer" ? "&l=" + l : "";
+        j.async = true;
+        j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, "script", "dataLayer", "GTM-ND7HKQ76");
+    </script>
+    <!-- End Google Tag Manager -->
+    <title>{t("salazar.title")}</title>
+  </head>
+  <body>
+    <div class="background-image"></div>
     <HeadHrefLangs />
-		<slot />
-	</body>
+    <slot />
+  </body>
 </html>
 
-
-
 <style is:global>
-	:root{
-		--background: 11 11 11;
-		--highlight: 98 186 243;
-	}
+  :root {
+    --background: 11 11 11;
+    --highlight: 98 186 243;
+  }
 
-	@font-face {
-		font-family: 'DMSans';
-		src: url('/fonts/DMSans-VariableFont.ttf');
-		font-weight: 100 900;
-		font-display: swap;
-	}
+  @font-face {
+    font-family: "DMSans";
+    src: url("/fonts/DMSans-VariableFont.ttf");
+    font-weight: 100 900;
+    font-display: swap;
+  }
 
-	html {
-  	box-sizing: border-box;
-		font-family: DMSans;
-  	font-size: 16px;
-		line-height: 20.8px;
-	}
+  html {
+    box-sizing: border-box;
+    font-family: DMSans;
+    font-size: 16px;
+    line-height: 20.8px;
+  }
 
-	*, *:before, *:after {
-		box-sizing: inherit;
-	}
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
 
-	body, h1, h2, h3, h4, h5, h6, p, ol, ul {
-		margin: 0;
-		padding: 0;
-	}
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  ol,
+  ul {
+    margin: 0;
+    padding: 0;
+  }
 
-	ol, ul {
-		list-style: none;
-	}
+  ol,
+  ul {
+    list-style: none;
+  }
 
-	img {
-		max-width: 100%;
-		height: auto;
-	}
-	a{
-		text-decoration: none;
-		color: white;
-	}
-	a:hover{
-		color: rgb(var(--highlight))
-	}
-	input,textarea{
-		appearance: none;
-		border-radius: 6px;
-		font-size: 14px;
-		padding-block: 6px;
-		padding-inline: 10px;
-		background-color: transparent;
-		border: 1px solid rgba(108, 110, 126, 1);
-		color: white;
-	}
-	input::placeholder, textarea::placeholder{
-		color:rgba(179, 179, 179, 1)
-	}
-	body{
-		background-color: rgb(var(--background))
-	}
-	
-	h1{
-		font-size: 48px;
-		font-weight:700;
-		line-height: 52.8px;
-		color: rgb(var(--highlight));
-	}
-	h2{
-		font-size:40px;
-		font-weight:700;
-		line-height: 44px;
-	}
-	h3{
-		font-size: 28px;
-		line-height: 30.8px;
-	}
-	h4{
-		font-size: 24px;
-		line-height: 31.25px;
-		font-weight: 300;
-	}
-	h5{
-		font-size: 14px;
-		line-height: 18.23px;
-		font-weight: 400;
-	}
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  a {
+    text-decoration: none;
+    color: white;
+  }
+  a:hover {
+    color: rgb(var(--highlight));
+  }
+  input,
+  textarea {
+    appearance: none;
+    border-radius: 6px;
+    font-size: 14px;
+    padding-block: 6px;
+    padding-inline: 10px;
+    background-color: transparent;
+    border: 1px solid rgba(108, 110, 126, 1);
+    color: white;
+  }
+  input::placeholder,
+  textarea::placeholder {
+    color: rgba(179, 179, 179, 1);
+  }
+  body {
+    background-color: rgb(var(--background));
+  }
 
+  h1 {
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 52.8px;
+    color: rgb(var(--highlight));
+  }
+  h2 {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 44px;
+  }
+  h3 {
+    font-size: 28px;
+    line-height: 30.8px;
+  }
+  h4 {
+    font-size: 24px;
+    line-height: 31.25px;
+    font-weight: 300;
+  }
+  h5 {
+    font-size: 14px;
+    line-height: 18.23px;
+    font-weight: 400;
+  }
 </style>
 
 <style is:global>
+  body {
+    width: 100%;
+    margin: auto;
+    font-weight: 400;
+    color: white;
+  }
 
-	body{
-		width: 100%;
-		margin:auto;
-		font-weight: 400;
-		color: white;
-	}
+  body .wrapper {
+    padding-inline: 20px;
+    width: 100%;
+    margin: auto;
+  }
 
-	body .wrapper{
-		padding-inline:20px;
-		width:100%;
-		margin: auto;
-	}
+  @media screen and (min-width: 768px) {
+    body .wrapper {
+      min-width: 768px;
+      padding-inline: 40px;
+    }
+  }
 
-	@media screen and (min-width:768px){
-		body .wrapper{
-			min-width:768px;
-			padding-inline:40px;
-		}
-	}
+  @media screen and (min-width: 1440px) {
+    body .wrapper {
+      min-width: 1440px;
+      padding-inline: 80px;
+    }
+  }
 
-	@media screen and (min-width:1440px){
-		body .wrapper{
-			min-width: 1440px;
-			padding-inline:80px;
-		}
-	} 
-</style>	
+  .background-image {
+    position: absolute;
+    top: -250px; /* Ajusta este valor para subir/bajar la imagen */
+    right: 0;
+    width: 1500px;
+    height: 100vh;
+    background-image: url("/images/background.png");
+    background-size: contain;
+    background-position: top right;
+    background-repeat: no-repeat;
+    z-index: -1;
+    pointer-events: none;
+	opacity: 50%;
+  }
+
+  @media screen and (max-width: 1439px) {
+    .background-image {
+      width: 75vw;
+	  top: -100px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .background-image {
+      width: 100vw;
+	  top: -50px;
+    }
+  }
+</style>

@@ -55,8 +55,18 @@ import Logo from "../assets/logo_salazar.svg";
   }
 
   @media screen and (min-width: 768px) {
+    header {
+      width: calc(100% - 80px);
+    }
+
     .header-text {
       display: block;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    header {
+      width: calc(100% - 32px);
     }
   }
 </style>

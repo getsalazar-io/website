@@ -1,0 +1,51 @@
+---
+import InfiniteCarousel from "./InfiniteCarousel.astro";
+import { t } from "i18next";
+
+const carouselItems = [
+  {
+    legend: t("section.carousel.items.item-1.legend"),
+    img: "/images/carousel/mock_part00_Panel - OverviewB.png",
+    tooltip: t("section.carousel.items.item-1.tooltip"),
+    legendPosition: "top",
+    imgClass: "img-1",
+  },
+  {
+    legend: t("section.carousel.items.item-2.legend"),
+    img: "/images/carousel/mock_part01_RPO PerformanceB.png",
+    tooltip: t("section.carousel.items.item-2.tooltip"),
+    legendPosition: "bottom",
+    imgClass: "img-2",
+  },
+  {
+    legend: t("section.carousel.items.item-3.legend"),
+    img: "/images/carousel/mock_part02_RPOService.png",
+    tooltip: t("section.carousel.items.item-3.tooltip"),
+    legendPosition: "top",
+    imgClass: "img-3",
+  },
+  {
+    legend: t("section.carousel.items.item-4.legend"),
+    img: "/images/carousel/mock_part04_GroupImpact.png",
+    tooltip: t("section.carousel.items.item-4.tooltip"),
+    legendPosition: "bottom",
+    imgClass: "img-4",
+  },
+  {
+    legend: t("section.carousel.items.item-5.legend"),
+    img: "/images/carousel/mock_part05_ImpactRanking.png",
+    tooltip: t("section.carousel.items.item-5.tooltip"),
+    legendPosition: "top",
+    imgClass: "img-5",
+  },
+  {
+    legend: t("section.carousel.items.item-6.legend"),
+    img: "/images/carousel/mock_part03_RTOService.png",
+    tooltip: t("section.carousel.items.item-6.tooltip"),
+    legendPosition: "bottom",
+    imgClass: "img-6",
+  },
+];
+---
+
+<InfiniteCarousel items={carouselItems} speed={60} />
