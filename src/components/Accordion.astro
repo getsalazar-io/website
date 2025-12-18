@@ -19,10 +19,7 @@ const { title, description, group, defaultOpen = false } = Astro.props;
       class={`accordion-icon pi ${defaultOpen ? "pi-minus" : "pi-plus"}`}
       aria-hidden="true"></span>
   </button>
-  <div
-    class="accordion-content"
-    style={defaultOpen ? "max-height: 1000px;" : ""}
-  >
+  <div class="accordion-content" style={defaultOpen ? "" : ""}>
     <div class="accordion-description">
       <p>{description}</p>
     </div>
@@ -71,6 +68,7 @@ const { title, description, group, defaultOpen = false } = Astro.props;
     overflow: hidden;
     transition: max-height 0.4s ease;
     margin: 0 24px;
+    text-align: left;
   }
 
   .accordion-description {
@@ -88,7 +86,6 @@ const { title, description, group, defaultOpen = false } = Astro.props;
 </style>
 
 <script>
-  // Función para cerrar un accordion
   function closeAccordion(
     button: Element,
     content: HTMLElement,
@@ -100,7 +97,6 @@ const { title, description, group, defaultOpen = false } = Astro.props;
     icon.classList.add("pi-plus");
   }
 
-  // Función para abrir un accordion
   function openAccordion(
     button: Element,
     content: HTMLElement,
@@ -112,15 +108,26 @@ const { title, description, group, defaultOpen = false } = Astro.props;
     icon.classList.add("pi-minus");
   }
 
-  // Ajustar altura correcta para accordions que inician abiertos
-  document
-    .querySelectorAll('.accordion-header[aria-expanded="true"]')
-    .forEach((button) => {
-      const content = button.nextElementSibling as HTMLElement;
-      if (content) {
-        content.style.maxHeight = content.scrollHeight + "px";
-      }
-    });
+  function initializeAccordionHeights() {
+    document
+      .querySelectorAll('.accordion-header[aria-expanded="true"]')
+      .forEach((button) => {
+        const content = button.nextElementSibling as HTMLElement;
+        if (content) {
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initializeAccordionHeights);
+  } else {
+    initializeAccordionHeights();
+  }
+
+  window.addEventListener("load", () => {
+    setTimeout(initializeAccordionHeights, 100);
+  });
 
   document.querySelectorAll(".accordion-header").forEach((button) => {
     button.addEventListener("click", () => {
@@ -130,7 +137,6 @@ const { title, description, group, defaultOpen = false } = Astro.props;
       const accordion = button.closest(".accordion") as HTMLElement;
       const group = accordion?.dataset.accordionGroup;
 
-      // Cerrar todos los accordions del mismo grupo
       if (group) {
         document
           .querySelectorAll(
@@ -151,7 +157,6 @@ const { title, description, group, defaultOpen = false } = Astro.props;
           });
       }
 
-      // Toggle del accordion actual
       if (isExpanded) {
         closeAccordion(button, content, icon);
       } else {
