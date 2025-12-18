@@ -21,18 +21,12 @@ import { t } from "i18next";
   const buttonHeaderBookDemo = document.getElementById(
     "button-header-book-demo"
   ) as HTMLButtonElement;
-  const buttonLearnMore = document.getElementById(
-    "button-learn-more"
-  ) as HTMLButtonElement;
 
   const formContainer = document.getElementById(
     "form-container"
   ) as HTMLElement;
 
   buttonHeaderBookDemo.addEventListener("click", () =>
-    scrollToContainer(formContainer)
-  );
-  buttonLearnMore.addEventListener("click", () =>
     scrollToContainer(formContainer)
   );
 
