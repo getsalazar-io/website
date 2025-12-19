@@ -9,7 +9,9 @@ import { t } from "i18next";
   <main class="error-page">
     <Header>
       <Fragment slot="button">
-        <a href="/" class="link-btn"><span class="pi pi-arrow-circle-left"></span>{t("404:button")}</a>
+        <a href="/" class="link-btn"
+          ><span class="pi pi-arrow-circle-left"></span>{t("404:button")}</a
+        >
       </Fragment>
     </Header>
     <div class="container">
@@ -26,8 +28,10 @@ import { t } from "i18next";
 <style is:global>
   .background-image {
     top: -100px;
-    width: 100vw;
-    height: -webkit-fill-available;
+    min-width: 100vw;
+    height: 100%;
+    background-position: top center;
+    background-size: cover;
   }
 
   .link-btn {
