@@ -1,0 +1,101 @@
+---
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import Layout from "../layouts/default.astro";
+import { t } from "i18next";
+---
+
+<Layout title={t("layout.title")} description={t("layout.description")}>
+  <main class="error-page">
+    <Header>
+      <Fragment slot="button">
+        <a href="/" class="link-btn">{t("button")}</a>
+      </Fragment>
+    </Header>
+    <div class="container">
+      <h1>404</h1>
+      <h2>{t("title")}</h2>
+      <p>{t("subtitle")}</p>
+    </div>
+    <Footer />
+    <img src="/images/bg_planet_Hero.png" class="planet-small" />
+    <img src="/images/bg_planet_Hero.png" class="planet-big" />
+  </main>
+</Layout>
+
+<style is:global>
+  .background-image {
+    top: -100px;
+    width: 100vw;
+    height: -webkit-fill-available;
+  }
+
+  .link-btn {
+    appearance: none;
+    height: 40px;
+    display: inline-flex;
+    border-radius: 6px;
+    padding-block: 10px;
+    padding-inline: 16px;
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: 10px;
+    transition: all 0.3s ease-out;
+    background-color: rgb(var(--highlight));
+    color: #1d1e27;
+  }
+
+  .link-btn:hover {
+    cursor: pointer;
+    background-color: #75c9ff;
+    scale: 1.05;
+    box-shadow: 0 0 40px 9px #2a4556;
+  }
+
+  .error-page {
+    height: 100vh;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  h1 {
+    color: #62baf3;
+    font-size: 96px;
+    font-weight: bold;
+  }
+
+  h2 {
+    font-size: 28px;
+    font-weight: 500;
+  }
+
+  p {
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .planet-small {
+    position: absolute;
+    height: 111px;
+    left: 75%;
+    top: 17.5%;
+  }
+
+  .planet-big {
+    position: absolute;
+    height: 500px;
+    bottom: -20%;
+    left: 0;
+  }
+</style>

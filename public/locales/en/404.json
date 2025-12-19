@@ -1,0 +1,9 @@
+{
+  "title": "Page not found",
+  "subtitle": "It seems you've ventured into unmapped territory.",
+  "button": "Back to Homepage",
+  "layout": {
+    "title": "404 - Página no encontrada | GetSalazar",
+    "description": "La página que buscas no existe"
+  }
+}
