@@ -10,7 +10,11 @@ import { HeadHrefLangs } from "astro-i18next/components";
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="https://getsalazar.io/images/apple-touch-icon.png">
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="https://getsalazar.io/images/apple-touch-icon.png"
+    />
     <meta name="generator" content={Astro.generator} />
     <meta
       name="description"
@@ -46,7 +50,7 @@ import { HeadHrefLangs } from "astro-i18next/components";
       content="https://getsalazar.io/images/social-preview.png"
     />
     <!-- Google Tag Manager -->
-    <script>
+    <script async>
       (function (w, d, s, l, i) {
         w[l] = w[l] || [];
         w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
@@ -59,6 +63,85 @@ import { HeadHrefLangs } from "astro-i18next/components";
       })(window, document, "script", "dataLayer", "GTM-ND7HKQ76");
     </script>
     <!-- End Google Tag Manager -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://www.sorint.com/#organization",
+            "name": "SORINT.lab",
+            "url": "https://www.sorint.com",
+            "logo": "https://getsalazar.io/images/apple-touch-icon.png",
+            "sameAs": [
+              "https://www.linkedin.com/company/sorint-spain",
+              "https://www.instagram.com/sorintlab/"
+            ]
+          },
+          {
+            "@type": "SoftwareApplication",
+            "name": "Salazar",
+            "applicationCategory": "BusinessApplication, SecurityApplication",
+            "operatingSystem": "Cloud, Web-based",
+            "description": "The missing link between backup and business resilience. Salazar proves what's truly recoverable and ensures compliance.",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "EUR",
+              "description": "Request a Demo for pricing"
+            },
+            "author": {
+              "@id": "https://www.sorint.com/#organization"
+            }
+          },
+          {
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Does Salazar replace my backup solution?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Salazar is a Governance and Risk Management tool that shows current recoverability level of the organization unifying RPO/RTO from different backup systems."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can Salazar trigger remediation?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Salazar doesn’t remediate, it exposes gaps through APIs. ITSM tools can easily integrate and take actions."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does it support multiple backup vendors?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes. Salazar supports several backup software vendors allowing to add new data sources, backup systems, etc."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does it assess replication?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Not today. Salazar focuses on recoverability from backups—the last‑resort foundation for recovery."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "How does it handle RTO?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Salazar estimates the potential RTO based on the asset's longest full image backup time. It then calculates the RTO for each asset and flags any misalignment."
+                }
+              }
+            ]
+          }
+        ]
+      }
+    </script>
     <title>{t("salazar.title")}</title>
   </head>
   <body>

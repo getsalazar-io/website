@@ -157,7 +157,7 @@ const { items, autoRotateSeconds = 5 } = Astro.props;
   }
 </style>
 
-<script define:vars={{ autoRotateSeconds }}>
+<script define:vars={{ autoRotateSeconds }} async>
   const showcase = document.querySelector(".feature-showcase");
   const items = document.querySelectorAll(".item-card");
   const image = document.getElementById("feature-image");
