@@ -1,6 +1,6 @@
 {
   "salazar": {
-    "title": "Salazar"
+    "title": "Salazar | See your true resilience & real RPO/RTO"
   },
   "button": {
     "demo": "Book a demo",
@@ -187,6 +187,27 @@
         "capability-4": "Single Sign-On (SSO)",
         "capability-5": "Full audit logging",
         "capability-6": "Exportable executive summaries"
+      }
+    },
+    "strategies": {
+      "header": "Backup strategies fail when control is missing",
+      "items": {
+        "item-1": {
+          "title": "Backup Job “Success” ≠ recoverability",
+          "description": "Tools focus on jobs and assets, not on the business services they’re meant to protect"
+        },
+        "item-2": {
+          "title": "Expected RPO/RTO rarely match reality",
+          "description": "At the moment you need them, assumptions collapse"
+        },
+        "item-3": {
+          "title": "Prioritization is guesswork",
+          "description": "Teams fix what they see first, not what impacts the business most"
+        },
+        "item-4": {
+          "title": "The Cost Trap",
+          "description": "Budgets get misallocated when non-critical assets are over-protected and business-critical services aren’t protected enough"
+        }
       }
     }
   },

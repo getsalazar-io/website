@@ -1,0 +1,40 @@
+---
+import FeatureShowcase from "./FeatureShowcase.astro";
+import { t } from "i18next";
+
+const features = [
+  {
+    title: t("section.strategies.items.item-1.title"),
+    description: t("section.strategies.items.item-1.description"),
+    image: "/images/showcase/Illustration_Success.png",
+  },
+  {
+    title: t("section.strategies.items.item-2.title"),
+    description: t("section.strategies.items.item-2.description"),
+    image: "/images/showcase/Illustration_RealityMatch.png",
+  },
+  {
+    title: t("section.strategies.items.item-3.title"),
+    description: t("section.strategies.items.item-3.description"),
+    image: "/images/showcase/Illustration_Prioritization.png",
+  },
+  {
+    title: t("section.strategies.items.item-4.title"),
+    description: t("section.strategies.items.item-4.description"),
+    image: "/images/showcase/Illustration_Trap.png",
+  },
+];
+---
+
+<div class="wrapper-section-strategies">
+  <div class="wrapper">
+    <h2>{t("section.strategies.header")}</h2>
+    <FeatureShowcase items={features} autoRotateSeconds={5} />
+  </div>
+</div>
+
+<style>
+  .wrapper-section-strategies h2 {
+    text-align: center;
+  }
+</style>
