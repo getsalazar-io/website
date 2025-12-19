@@ -9,7 +9,7 @@ import { t } from "i18next";
   <main class="error-page">
     <Header>
       <Fragment slot="button">
-        <a href="/" class="link-btn">{t("404:button")}</a>
+        <a href="/" class="link-btn"><span class="pi pi-arrow-circle-left"></span>{t("404:button")}</a>
       </Fragment>
     </Header>
     <div class="container">
@@ -33,7 +33,9 @@ import { t } from "i18next";
   .link-btn {
     appearance: none;
     height: 40px;
-    display: inline-flex;
+    display: flex;
+    align-items: center;
+    gap: 6px;
     border-radius: 6px;
     padding-block: 10px;
     padding-inline: 16px;
