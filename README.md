@@ -1,5 +1,5 @@
 # Salazar landing made with:
-### Astro Starter Kit: basisc
+## Astro Starter Kit: basics
 
 ### 📚 Plugin
 - i18n to manage texts and languages
