@@ -17,6 +17,7 @@ const { videoUrl } = Astro.props;
       <source src={videoUrl} type="video/mp4" />
       {t("section.hero.modal-alt")}
     </video>
+    <img src="/images/bg_planet_Hero.png" class="planet" />
   </div>
 </div>
 
@@ -58,6 +59,7 @@ const { videoUrl } = Astro.props;
     background-position: top right;
     background-repeat: no-repeat;
     background-position-y: -200px;
+    position: relative;
   }
 
   video {
@@ -65,6 +67,7 @@ const { videoUrl } = Astro.props;
     height: 100%;
     object-fit: contain;
     max-width: 1000px;
+    z-index: 1;
   }
 
   .modal-close {
@@ -87,6 +90,16 @@ const { videoUrl } = Astro.props;
   .modal-close span {
     color: white;
     font-size: 12px;
+  }
+
+  .planet {
+    position: absolute;
+    height: 1218px;
+    width: auto;
+    top: 200px;
+    left: -500px;
+    will-change: transform;
+    z-index: 0;
   }
 
   @media screen and (max-width: 768px) {
