@@ -18,10 +18,11 @@
   },
   "section": {
     "hero": {
-      "header": "Everything starts with Salazar",
-      "subheader": "The missing link between backup and business resilience",
-      "paragraph": "Backup compliance and governance platform that gives IT teams insights to better protect and improve your services. \nGain visibility into your RPO/RTO compliance across all backup systems. \nEnhance <1>compliance, security</1> and <1>operational efficiency.</1>",
-      "alt-text": "Some mocks of the Salazar app"
+      "header": "Your true cyber resilience, finally unified",
+      "subheader": "Salazar proves what’s truly recoverable... and what’s only assumed to be",
+      "paragraph": "Unify your backup landscape, uncover real RPO/RTO, and highlight the priorities.",
+      "alt-text": "Some mocks of the Salazar app",
+      "modal-alt": "Your browser doesn't support this video element."
     },
     "presentation": {
       "header": "Is compliance draining your team's time",
