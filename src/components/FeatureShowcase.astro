@@ -31,9 +31,10 @@ const { items, autoRotateSeconds = 5 } = Astro.props;
           data-index={index}
         >
           <div class="item-content">
-            <p class="item-title">
-              <span class="item-order">0{index + 1}</span> {item.title}
-            </p>
+            <div class="item-header">
+              <span class="item-order">0{index + 1}</span>
+              <span class="item-title">{item.title}</span>
+            </div>
             <div class="item-expandable">
               <p class="item-description">{item.description}</p>
               <div class="progress-bar">
@@ -99,6 +100,11 @@ const { items, autoRotateSeconds = 5 } = Astro.props;
     padding: 20px;
   }
 
+  .item-header {
+    display: flex;
+    gap: 14px;
+  }
+
   .item-card.active {
     outline-color: #3494ce;
   }
@@ -112,6 +118,8 @@ const { items, autoRotateSeconds = 5 } = Astro.props;
 
   .item-order {
     color: #ffffff;
+    font-size: 24px;
+    margin-top: 2px;
   }
 
   .item-expandable {
@@ -140,20 +148,38 @@ const { items, autoRotateSeconds = 5 } = Astro.props;
   .progress-fill {
     height: 100%;
     width: 0%;
-    background: #62BAF3;
+    background: #62baf3;
     transition: width 0.1s linear;
   }
 
   @media (max-width: 768px) {
     .feature-showcase {
       grid-template-columns: 1fr;
-      padding: 2rem 0;
+      padding: 0 0 2rem 0;
+      gap: 1rem;
     }
 
     .image-container {
       order: -1;
-      min-height: 300px;
       position: relative;
+      height: auto;
+    }
+
+    .feature-image {
+      width: auto;
+      height: 200px;
+    }
+
+    .item-title {
+      font-size: 20px;
+    }
+
+    .item-order {
+      font-size: 24px;
+    }
+
+    .item-description {
+      font-size: 16px;
     }
   }
 </style>
@@ -174,8 +200,7 @@ const { items, autoRotateSeconds = 5 } = Astro.props;
 
   const syncHeight = () => {
     if (itemsList && imageContainer) {
-      const listHeight = itemsList.offsetHeight;
-      imageContainer.style.height = `${listHeight}px`;
+      imageContainer.style.height = `auto`;
     }
   };
 

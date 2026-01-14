@@ -16,14 +16,22 @@ import { t } from "i18next";
     margin: auto;
     text-align: center;
     padding-block: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   .section-presentation-content {
     display: flex;
     flex-flow: column;
     gap: 8px;
-    margin-bottom: 40px;
   }
   h2 {
     color: rgb(var(--highlight));
+  }
+
+  @media screen and (max-width: 768px) {
+    .wrapper-section-presentation {
+      min-height: 100vh;
+    }
   }
 </style>
