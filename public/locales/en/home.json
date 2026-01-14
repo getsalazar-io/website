@@ -14,7 +14,7 @@
     "next": "Next"
   },
   "header": {
-    "text": "The missing link between backup and business resilience"
+    "text": "Governance & Compliance Cyber Resilience Solution"
   },
   "images": {
     "planetBig": "Big planet background image",
@@ -29,8 +29,8 @@
       "modal-alt": "Your browser doesn't support this video element."
     },
     "presentation": {
-      "header": "Is compliance draining your team's time",
-      "subheader": "Get audit-ready oversight at a glance"
+      "header": "Is compliance draining your team's time?",
+      "subheader": "Control and accountability, clearly exposed"
     },
     "challenge": {
       "header": "Overcoming the challenges of IT management",
@@ -111,8 +111,8 @@
       "card": {
         "card-1": {
           "title": "CONNECT",
-          "description": "Seamlessly ingest metadata from backup systems such as **NetBackup**, **Commvault**, **Cohesity**, **Veeam**, snapshots and business services definitions from **CMDB**s via **secure API**s.",
-          "subtitle": "Connector-first, agentless approach that consolidates backup signals without touching production workloads."
+          "description": "Seamlessly ingests **metadata** from backup platforms and tools, and consumes business service definitions from the **CMDB** via **secure API**s.",
+          "subtitle": "By feeding real recoverability, RPO/RTO adherence, and governance signals back into the CMDB, it completes the source of truth with protection, risk, and compliance context."
         },
         "card-2": {
           "title": "MAP",
@@ -134,22 +134,26 @@
       "header": "FAQ",
       "question": {
         "question-1": {
+          "title": "What type of organizations benefit most from Salazar?",
+          "description": "Salazar is ideal for organizations with complex, multi-vendor backup environments that need centralized visibility, measurable cyber resilience, and governance-grade reporting."
+        },
+        "question-2": {
           "title": "Does Salazar replace my backup solution?",
           "description": "Salazar is a Governance and Risk Management tool that shows current recoverability level of the organization unifying RPO/RTO from different backup systems."
         },
-        "question-2": {
+        "question-3": {
           "title": "Can Salazar trigger remediation?",
           "description": "Salazar doesn't remediate, it exposes gaps through APIs. ITSM tools can easily integrate and take actions."
         },
-        "question-3": {
+        "question-4": {
           "title": "Does it support multiple backup vendors?",
           "description": "Yes. Salazar support several backup software vendors allowing to add new data sources, backup systems, etc.."
         },
-        "question-4": {
+        "question-5": {
           "title": "Does it assess replication?",
           "description": "Not today. Salazar focuses on recoverability from backups—the last‑resort foundation for recovery."
         },
-        "question-5": {
+        "question-6": {
           "title": "How does it handle RTO?",
           "description": "Salazar estimates the potential RTO based on the asset's longest full image backup time. It then calculates the RTO for each asset and flags any misalignment with the RTO declared for the corresponding services."
         }
@@ -191,7 +195,7 @@
         "capability-3": "API-first architecture",
         "capability-4": "Single Sign-On (SSO)",
         "capability-5": "Full audit logging",
-        "capability-6": "Exportable executive summaries"
+        "capability-6": "Sec Ops integration (ITSM, GRC, SIEM)"
       }
     },
     "strategies": {
