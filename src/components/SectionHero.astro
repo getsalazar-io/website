@@ -83,8 +83,7 @@ import Modal from "./Modal.astro";
     text-align: center;
   }
   h2 {
-    font-size: 28px;
-    line-height: 31px;
+    font-weight: 500;
   }
   p > span {
     font-weight: 700;
@@ -206,14 +205,19 @@ import Modal from "./Modal.astro";
   }
 
   @media (max-width: 768px) {
+    p {
+      font-size: 14px;
+    }
+
     .section-hero {
-      margin-top: 120px;
+      margin-top: 160px;
       min-height: 150vh;
     }
 
     .hero-image-wrapper {
       padding: 0 20px;
       overflow: visible;
+      min-height: 300px;
     }
 
     .hero-parallax {
@@ -265,11 +269,6 @@ import Modal from "./Modal.astro";
       height: 80px;
       left: 70%;
       top: 10%;
-    }
-
-    h2 {
-      font-size: 24px;
-      line-height: 28px;
     }
   }
 </style>
