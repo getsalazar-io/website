@@ -16,6 +16,10 @@
   "header": {
     "text": "The missing link between backup and business resilience"
   },
+  "images": {
+    "planetBig": "Big planet background image",
+    "planetSmall": "Small planet background image"
+  },
   "section": {
     "hero": {
       "header": "Your true cyber resilience, finally unified",

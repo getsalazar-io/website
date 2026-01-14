@@ -4,6 +4,8 @@
   "button": "Back to Homepage",
   "layout": {
     "title": "404 - Página no encontrada | GetSalazar",
-    "description": "La página que buscas no existe"
+    "description": "La página que buscas no existe",
+    "altBig": "Big planet background image",
+    "altSmall": "Small planet background image"
   }
 }

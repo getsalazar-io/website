@@ -43,8 +43,18 @@ import Modal from "./Modal.astro";
       </div>
     </div>
   </div>
-  <img src="/images/bg_planet_Hero.png" class="planet-small" id="planetSmall" />
-  <img src="/images/bg_planet_Hero.png" class="planet-big" id="planetBig" />
+  <img
+    src="/images/bg_planet_Hero.png"
+    class="planet-small"
+    id="planetSmall"
+    alt={t("images.planetSmall")}
+  />
+  <img
+    src="/images/bg_planet_Hero.png"
+    class="planet-big"
+    id="planetBig"
+    alt={t("images.planetBig")}
+  />
 </div>
 
 <Modal videoUrl="/videos/Salazar2026_speedup.mp4" />
@@ -196,72 +206,72 @@ import Modal from "./Modal.astro";
   }
 
   @media (max-width: 768px) {
-  .section-hero {
-    margin-top: 120px;
-    min-height: 150vh;
-  }
+    .section-hero {
+      margin-top: 120px;
+      min-height: 150vh;
+    }
 
-  .hero-image-wrapper {
-    padding: 0 20px;
-    overflow: visible;
-  }
+    .hero-image-wrapper {
+      padding: 0 20px;
+      overflow: visible;
+    }
 
-  .hero-parallax {
-    height: 250px;
-    overflow: visible;
-  }
+    .hero-parallax {
+      height: 250px;
+      overflow: visible;
+    }
 
-  .hero-parallax img {
-    object-fit: contain; 
-    width: auto;
-  }
+    .hero-parallax img {
+      object-fit: contain;
+      width: auto;
+    }
 
-  .hero-center {
-    height: 250px;
-    left: 50%;
-    transform: translateX(-50%);
-  }
+    .hero-center {
+      height: 250px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
 
-  .hero-mid-left {
-    height: 180px;
-    left: 15%;
-    transform: translateX(-30%);
-  }
+    .hero-mid-left {
+      height: 180px;
+      left: 15%;
+      transform: translateX(-30%);
+    }
 
-  .hero-mid-right {
-    height: 180px;
-    left: 85%;
-    transform: translateX(-75%);
-  }
+    .hero-mid-right {
+      height: 180px;
+      left: 85%;
+      transform: translateX(-75%);
+    }
 
-  .hero-back-left {
-    height: 110px;
-    left: 0;
-    transform: translateX(0);
-  }
+    .hero-back-left {
+      height: 110px;
+      left: 0;
+      transform: translateX(0);
+    }
 
-  .hero-back-right {
-    height: 110px;
-    right: 0;
-    transform: translateX(0);
-  }
+    .hero-back-right {
+      height: 110px;
+      right: 0;
+      transform: translateX(0);
+    }
 
-  .planet-big {
-    height: 300px;
-    bottom: 20%;
-  }
+    .planet-big {
+      height: 300px;
+      bottom: 20%;
+    }
 
-  .planet-small {
-    height: 80px;
-    left: 70%;
-    top: 10%;
-  }
+    .planet-small {
+      height: 80px;
+      left: 70%;
+      top: 10%;
+    }
 
-  h2 {
-    font-size: 24px;
-    line-height: 28px;
+    h2 {
+      font-size: 24px;
+      line-height: 28px;
+    }
   }
-}
 </style>
 
 <script>
@@ -276,23 +286,6 @@ import Modal from "./Modal.astro";
     const PARALLAX_SPEED_HERO = 0.5;
     const PARALLAX_SPEED_PLANET_BIG = 0.3;
     const PARALLAX_SPEED_PLANET_SMALL = 0.4;
-    const MOUSE_MOVE_INTENSITY = 5;
-
-    const heroImages = {
-      center: document.querySelector(".hero-center") as HTMLElement,
-      midLeft: document.querySelector(".hero-mid-left") as HTMLElement,
-      midRight: document.querySelector(".hero-mid-right") as HTMLElement,
-      backLeft: document.querySelector(".hero-back-left") as HTMLElement,
-      backRight: document.querySelector(".hero-back-right") as HTMLElement,
-    };
-
-    const layerDepths = {
-      center: 1,
-      midLeft: 0.7,
-      midRight: 0.7,
-      backLeft: 0.4,
-      backRight: 0.4,
-    };
 
     let currentScrollY = 0;
 
@@ -346,43 +339,6 @@ import Modal from "./Modal.astro";
       }
     };
 
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!heroParallax) return;
-
-      const rect = heroParallax.getBoundingClientRect();
-
-      const centerX = rect.left + rect.width / 2;
-      const centerY = rect.top + rect.height / 2;
-
-      const deltaX = Math.max(
-        -2,
-        Math.min(2, (e.clientX - centerX) / (rect.width / 2))
-      );
-      const deltaY = Math.max(
-        -2,
-        Math.min(2, (e.clientY - centerY) / (rect.height / 2))
-      );
-
-      Object.entries(heroImages).forEach(([key, image]) => {
-        if (image) {
-          const depth = layerDepths[key as keyof typeof layerDepths];
-          const moveX = deltaX * MOUSE_MOVE_INTENSITY * depth;
-          const moveY = deltaY * MOUSE_MOVE_INTENSITY * depth;
-
-          let baseTransform = "";
-          if (key === "center") {
-            baseTransform = "translateX(-50%)";
-          } else if (key === "midLeft") {
-            baseTransform = "translateX(-50%)";
-          } else if (key === "midRight") {
-            baseTransform = "translateX(-50%)";
-          }
-
-          image.style.transform = `${baseTransform} translate(${moveX}px, ${moveY}px)`;
-        }
-      });
-    };
-
     let ticking = false;
     const optimizedScroll = () => {
       if (!ticking) {
@@ -395,6 +351,5 @@ import Modal from "./Modal.astro";
     };
 
     window.addEventListener("scroll", optimizedScroll);
-    document.addEventListener("mousemove", handleMouseMove);
   });
 </script>

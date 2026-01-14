@@ -17,7 +17,11 @@ const { videoUrl } = Astro.props;
       <source src={videoUrl} type="video/mp4" />
       {t("section.hero.modal-alt")}
     </video>
-    <img src="/images/bg_planet_Hero.png" class="planet" />
+    <img
+      src="/images/bg_planet_Hero.png"
+      alt={t("images.planetBig")}
+      class="planet"
+    />
   </div>
 </div>
 

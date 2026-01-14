@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "astro": "^5.2.5",
+    "astro-compress": "2.3.6",
     "astro-i18next": "^1.0.0-beta.21",
     "ci": "^2.3.0",
     "glider-js": "1.7.9",

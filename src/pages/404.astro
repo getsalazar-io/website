@@ -20,8 +20,16 @@ import { t } from "i18next";
       <p>{t("404:subtitle")}</p>
     </div>
     <Footer />
-    <img src="/images/bg_planet_Hero.png" class="planet-small" />
-    <img src="/images/bg_planet_Hero.png" class="planet-big" />
+    <img
+      src="/images/bg_planet_Hero.png"
+      class="planet-small"
+      alt={t("404:layout.altBig")}
+    />
+    <img
+      src="/images/bg_planet_Hero.png"
+      class="planet-big"
+      alt={t("404:layout.altSmall")}
+    />
   </main>
 </Layout>
 
