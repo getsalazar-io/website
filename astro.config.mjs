@@ -8,20 +8,17 @@ export default defineConfig({
     svg: true,
   },
   build: {
-    inlineStylesheets: "never", // ✅ Nunca incluir CSS inline
-    assets: "_astro", // Carpeta para assets compilados
+    inlineStylesheets: "never",
+    assets: "_astro",
   },
-  compressHTML: true, // ✅ Minificar HTML
+  compressHTML: true,
   vite: {
     build: {
-      minify: "terser", // O 'esbuild' (más rápido)
-      cssCodeSplit: true, // ✅ Dividir CSS en chunks
+      minify: "terser",
+      cssCodeSplit: false,
       rollupOptions: {
         output: {
-          manualChunks: {
-            // Separar vendor code
-            vendor: ["react", "vue"], // Si usas estas librerías
-          },
+          manualChunks: undefined,
         },
       },
     },
@@ -32,7 +29,7 @@ export default defineConfig({
       CSS: true,
       HTML: true,
       JavaScript: true,
-      Image: false, // Ya lo manejas con el componente Image
+      Image: false,
     }),
   ],
 });

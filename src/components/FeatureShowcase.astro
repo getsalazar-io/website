@@ -20,6 +20,8 @@ const { items, autoRotateSeconds = 5 } = Astro.props;
       src={items[0].image}
       alt={items[0].title}
       class="feature-image"
+      loading="lazy"
+      decoding="async"
     />
   </div>
 

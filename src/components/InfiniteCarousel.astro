@@ -27,9 +27,15 @@ const triplicatedItems = [...items, ...items, ...items];
           data-tooltip={item.tooltip}
           data-item-id={index}
         >
-          <img src={item.img} alt={item.legend} class={item.imgClass} />
-          <p 
-            class="item-legend" 
+          <img
+            src={item.img}
+            alt={item.legend}
+            class={item.imgClass}
+            loading="lazy"
+            decoding="async"
+          />
+          <p
+            class="item-legend"
             data-index={`item-${index}`}
             data-position={item.legendPosition}
           >
@@ -118,8 +124,8 @@ const triplicatedItems = [...items, ...items, ...items];
     position: absolute;
     left: 50%;
     transform: translateX(-50%) translateY(-8px);
-    background: #4B5563;
-    color: #F3F4F6;
+    background: #4b5563;
+    color: #f3f4f6;
     padding: 0.5rem 1rem;
     border-radius: 4px;
     font-size: 0.85rem;
@@ -145,7 +151,7 @@ const triplicatedItems = [...items, ...items, ...items];
     left: 50%;
     transform: translateX(-50%);
     border: 6px solid transparent;
-    border-top-color: #4B5563;
+    border-top-color: #4b5563;
   }
 
   .item-legend[data-position="bottom"] .tooltip {
@@ -160,7 +166,7 @@ const triplicatedItems = [...items, ...items, ...items];
     left: 50%;
     transform: translateX(-50%);
     border: 6px solid transparent;
-    border-bottom-color: #4B5563;
+    border-bottom-color: #4b5563;
   }
 
   .item-legend.active .tooltip {
@@ -172,7 +178,7 @@ const triplicatedItems = [...items, ...items, ...items];
     bottom: 30px;
     left: 10px;
   }
-  
+
   .img-2 {
     top: 20px;
     left: -10px;
@@ -200,14 +206,14 @@ const triplicatedItems = [...items, ...items, ...items];
   document.addEventListener("DOMContentLoaded", () => {
     const carousel = document.querySelector(".infinite-carousel");
     const track = carousel?.querySelector(".carousel-track") as HTMLElement;
-    
+
     if (!track) return;
 
     const speed = parseFloat(track.getAttribute("data-speed") || "60");
     const pixelsPerSecond = 60;
     const frameRate = 60;
     const pixelsPerFrame = pixelsPerSecond / frameRate;
-    
+
     let currentOffset = 0;
     let animationId: number;
     let isPaused = false;
@@ -218,7 +224,7 @@ const triplicatedItems = [...items, ...items, ...items];
         track.style.transform = `translateX(-${currentOffset}px)`;
         checkAndRecycleFirstItem();
       }
-      
+
       animationId = requestAnimationFrame(animate);
     };
 
@@ -232,11 +238,11 @@ const triplicatedItems = [...items, ...items, ...items];
 
       if (currentOffset >= totalItemWidth) {
         const clone = firstItem.cloneNode(true) as HTMLElement;
-        
+
         track.removeChild(firstItem);
-        
+
         track.appendChild(clone);
-        
+
         currentOffset -= totalItemWidth;
         track.style.transform = `translateX(-${currentOffset}px)`;
 
@@ -246,24 +252,24 @@ const triplicatedItems = [...items, ...items, ...items];
 
     const setupTooltipListeners = () => {
       const legends = track.querySelectorAll(".item-legend");
-      
+
       legends.forEach((legend) => {
         const newLegend = legend.cloneNode(true);
         legend.parentNode?.replaceChild(newLegend, legend);
       });
 
       const newLegends = track.querySelectorAll(".item-legend");
-      
+
       newLegends.forEach((legend) => {
         legend.addEventListener("click", (e) => {
           e.stopPropagation();
-          
+
           newLegends.forEach((l) => {
             if (l !== legend) {
               l.classList.remove("active");
             }
           });
-          
+
           legend.classList.toggle("active");
         });
       });
