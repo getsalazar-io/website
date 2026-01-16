@@ -120,18 +120,6 @@ import Strategies from "./SectionStrategies.astro";
     );
   }
 
-  @media screen and (min-width: 1440px) {
-    .main-section-form {
-      background-position: calc(50% - 200px) center;
-    }
-  }
-
-  @media (max-width: 768px) {
-    .main-section-hero {
-      min-height: 150vh;
-    }
-  }
-
   .scroll-down {
     width: 37px;
     height: 86px;
@@ -158,4 +146,21 @@ import Strategies from "./SectionStrategies.astro";
   .scroll-down span {
     animation: bounce 2s infinite;
   }
+
+  @media screen and (min-width: 1440px) {
+    .main-section-form {
+      background-position: calc(50% - 200px) center;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .main-section-hero {
+      min-height: 150vh;
+    }
+
+    .scroll-down {
+      display: none;
+    }
+  }
+
 </style>
