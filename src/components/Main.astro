@@ -39,18 +39,16 @@ import Strategies from "./SectionStrategies.astro";
   </div>
 </main>
 
-<script>
-  const VIEWPORT_THRESHOLD = 0.2; // 20% del tamaño de la pantalla
-  const SNAP_OFFSET = -200; // Píxeles por encima de la sección
+<!-- <script>
+  const VIEWPORT_THRESHOLD = 0.2;
+  const SNAP_OFFSET = -200;
   let isSnapping = false;
 
   function initTouchSnap() {
-    // Solo activar en móvil
     if (window.innerWidth > 768) return;
 
     const sections = Array.from(document.querySelectorAll('.snap-section'));
 
-    // Función para hacer scroll a una posición específica
     function scrollToSection(section) {
       const sectionTop = section.getBoundingClientRect().top + window.scrollY;
       const targetScroll = sectionTop + SNAP_OFFSET;
@@ -66,21 +64,18 @@ import Strategies from "./SectionStrategies.astro";
       if (isSnapping) return;
 
       const viewportHeight = window.innerHeight;
-      const thresholdFromBottom = viewportHeight * (1 - VIEWPORT_THRESHOLD); // 80% desde arriba = 20% desde abajo
-      const thresholdFromTop = viewportHeight * VIEWPORT_THRESHOLD; // 20% desde arriba
+      const thresholdFromBottom = viewportHeight * (1 - VIEWPORT_THRESHOLD);
+      const thresholdFromTop = viewportHeight * VIEWPORT_THRESHOLD;
 
-      // Buscar si alguna sección cumple las condiciones de snap
       for (let i = 0; i < sections.length; i++) {
         const currentSection = sections[i];
         const rect = currentSection.getBoundingClientRect();
         
-        // SNAP HACIA ABAJO: la parte superior de la siguiente sección superó el 20% desde abajo
         if (i < sections.length - 1) {
           const nextSection = sections[i + 1];
           const nextRect = nextSection.getBoundingClientRect();
           const nextSectionTop = nextRect.top;
 
-          // Si el top de la siguiente sección está entre el 80% y 100% del viewport (pasó el 20% desde abajo)
           if (nextSectionTop > 0 && nextSectionTop < thresholdFromBottom) {
             isSnapping = true;
             
@@ -90,17 +85,15 @@ import Strategies from "./SectionStrategies.astro";
               isSnapping = false;
             }, 800);
             
-            return; // Salir después de hacer snap
+            return;
           }
         }
 
-        // SNAP HACIA ARRIBA: la parte inferior de la sección anterior superó el 20% desde arriba
         if (i > 0) {
           const prevSection = sections[i - 1];
           const prevRect = prevSection.getBoundingClientRect();
           const prevSectionBottom = prevRect.bottom;
 
-          // Si el bottom de la sección anterior está entre 0 y 20% del viewport (pasó el 20% desde arriba)
           if (prevSectionBottom > thresholdFromTop && prevSectionBottom < viewportHeight) {
             isSnapping = true;
             
@@ -110,18 +103,15 @@ import Strategies from "./SectionStrategies.astro";
               isSnapping = false;
             }, 800);
             
-            return; // Salir después de hacer snap
+            return;
           }
         }
       }
 
-      // Si no se cumple ninguna condición, el scroll queda libre
     }
 
-    // Agregar listener
     document.addEventListener('touchend', handleTouchEnd, { passive: true });
 
-    // Cleanup al cambiar a desktop
     const handleResize = () => {
       if (window.innerWidth > 768) {
         document.removeEventListener('touchend', handleTouchEnd);
@@ -132,13 +122,12 @@ import Strategies from "./SectionStrategies.astro";
     window.addEventListener('resize', handleResize);
   }
 
-  // Inicializar cuando el DOM esté listo
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initTouchSnap);
   } else {
     initTouchSnap();
   }
-</script>
+</script> -->
 
 <style>
   main {
