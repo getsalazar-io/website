@@ -10,34 +10,152 @@ import Strategies from "./SectionStrategies.astro";
 ---
 
 <main>
-  <section class="main-section-hero">
+  <section class="main-section-hero snap-section">
     <Hero />
   </section>
-  <section class="main-section-strategies">
+  <section class="main-section-strategies snap-section">
     <Strategies />
   </section>
-  <section class="main-section-features">
+  <section class="main-section-features snap-section">
     <Features />
   </section>
-  <section class="main-section-presentation">
+  <section class="main-section-presentation snap-section">
     <Presentation />
   </section>
-  <section class="main-section-carousel">
+  <section class="main-section-carousel snap-section">
     <Carousel />
   </section>
-  <section class="main-section-capabilities">
+  <section class="main-section-capabilities snap-section">
     <Capabilities />
   </section>
-  <section class="main-section-faq">
+  <section class="main-section-faq snap-section">
     <Faq />
   </section>
-  <section class="main-section-form">
+  <section class="main-section-form snap-section">
     <Form />
   </section>
   <div class="scroll-down" id="scrollDown">
     <span class="pi pi-arrow-down"></span>
   </div>
 </main>
+
+<script>
+  const SCROLL_THRESHOLD = 0.2; // 20% del tamaño de la sección
+  const SNAP_OFFSET = -150; // Píxeles por encima de la sección
+  let touchStartY = 0;
+  let scrollStartY = 0;
+  let isSnapping = false;
+
+  function initTouchSnap() {
+    // Solo activar en móvil
+    if (window.innerWidth > 768) return;
+
+    const sections = Array.from(document.querySelectorAll('.snap-section'));
+
+    // Función para encontrar la sección más visible
+    function getCurrentSection() {
+      let maxVisibility = 0;
+      let currentSection = null;
+      let currentIndex = -1;
+
+      sections.forEach((section, index) => {
+        const rect = section.getBoundingClientRect();
+        const sectionHeight = rect.height;
+        const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
+        const visibility = visibleHeight / sectionHeight;
+
+        if (visibility > maxVisibility) {
+          maxVisibility = visibility;
+          currentSection = section;
+          currentIndex = index;
+        }
+      });
+
+      return { section: currentSection, index: currentIndex };
+    }
+
+    // Función para hacer scroll a una posición específica
+    function scrollToSection(section) {
+      const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+      const targetScroll = sectionTop + SNAP_OFFSET;
+
+      window.scrollTo({ 
+        top: targetScroll,
+        behavior: 'smooth'
+      });
+    }
+
+    // Al iniciar el touch
+    function handleTouchStart(e) {
+      if (isSnapping) return;
+      touchStartY = e.touches[0].clientY;
+      scrollStartY = window.scrollY;
+    }
+
+    // Al soltar el touch
+    function handleTouchEnd(e) {
+      if (isSnapping) return;
+
+      const scrollEndY = window.scrollY;
+      const scrollDiff = scrollEndY - scrollStartY;
+      const { section: currentSection, index: currentIndex } = getCurrentSection();
+
+      if (!currentSection) return;
+
+      const sectionHeight = currentSection.getBoundingClientRect().height;
+      const scrollThreshold = sectionHeight * SCROLL_THRESHOLD;
+
+      // Scroll hacia abajo (20% o más)
+      if (scrollDiff > scrollThreshold && currentIndex < sections.length - 1) {
+        isSnapping = true;
+        const nextSection = sections[currentIndex + 1];
+        
+        scrollToSection(nextSection);
+
+        setTimeout(() => {
+          isSnapping = false;
+        }, 800);
+      }
+      // Scroll hacia arriba (20% o más)
+      else if (scrollDiff < -scrollThreshold && currentIndex > 0) {
+        isSnapping = true;
+        const prevSection = sections[currentIndex - 1];
+        
+        scrollToSection(prevSection);
+
+        setTimeout(() => {
+          isSnapping = false;
+        }, 800);
+      }
+      // No supera el umbral: volver a la sección actual
+      else {
+        scrollToSection(currentSection);
+      }
+    }
+
+    // Agregar listeners
+    document.addEventListener('touchstart', handleTouchStart, { passive: true });
+    document.addEventListener('touchend', handleTouchEnd, { passive: true });
+
+    // Cleanup al cambiar a desktop
+    const handleResize = () => {
+      if (window.innerWidth > 768) {
+        document.removeEventListener('touchstart', handleTouchStart);
+        document.removeEventListener('touchend', handleTouchEnd);
+        window.removeEventListener('resize', handleResize);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+  }
+
+  // Inicializar cuando el DOM esté listo
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTouchSnap);
+  } else {
+    initTouchSnap();
+  }
+</script>
 
 <style>
   main {
@@ -47,11 +165,13 @@ import Strategies from "./SectionStrategies.astro";
     width: 100%;
     margin-top: -90px;
   }
+
   .main-section-hero {
     position: relative;
     z-index: 0;
     height: 135vh;
   }
+
   .main-section-hero::after {
     display: block;
     content: "";
@@ -162,5 +282,4 @@ import Strategies from "./SectionStrategies.astro";
       display: none;
     }
   }
-
 </style>
