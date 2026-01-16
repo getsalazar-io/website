@@ -15,10 +15,12 @@ export default defineConfig({
   vite: {
     build: {
       minify: "terser",
-      cssCodeSplit: false,
+      cssCodeSplit: true,
       rollupOptions: {
         output: {
-          manualChunks: undefined,
+          manualChunks: {
+            vendor: ["react", "vue"],
+          },
         },
       },
     },
