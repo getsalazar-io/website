@@ -40,10 +40,8 @@ import Strategies from "./SectionStrategies.astro";
 </main>
 
 <script>
-  const SCROLL_THRESHOLD = 0.2; // 20% del tamaño de la sección
-  const SNAP_OFFSET = -150; // Píxeles por encima de la sección
-  let touchStartY = 0;
-  let scrollStartY = 0;
+  const VIEWPORT_THRESHOLD = 0.2; // 20% del tamaño de la pantalla
+  const SNAP_OFFSET = -200; // Píxeles por encima de la sección
   let isSnapping = false;
 
   function initTouchSnap() {
@@ -51,28 +49,6 @@ import Strategies from "./SectionStrategies.astro";
     if (window.innerWidth > 768) return;
 
     const sections = Array.from(document.querySelectorAll('.snap-section'));
-
-    // Función para encontrar la sección más visible
-    function getCurrentSection() {
-      let maxVisibility = 0;
-      let currentSection = null;
-      let currentIndex = -1;
-
-      sections.forEach((section, index) => {
-        const rect = section.getBoundingClientRect();
-        const sectionHeight = rect.height;
-        const visibleHeight = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0);
-        const visibility = visibleHeight / sectionHeight;
-
-        if (visibility > maxVisibility) {
-          maxVisibility = visibility;
-          currentSection = section;
-          currentIndex = index;
-        }
-      });
-
-      return { section: currentSection, index: currentIndex };
-    }
 
     // Función para hacer scroll a una posición específica
     function scrollToSection(section) {
@@ -85,62 +61,69 @@ import Strategies from "./SectionStrategies.astro";
       });
     }
 
-    // Al iniciar el touch
-    function handleTouchStart(e) {
-      if (isSnapping) return;
-      touchStartY = e.touches[0].clientY;
-      scrollStartY = window.scrollY;
-    }
-
     // Al soltar el touch
-    function handleTouchEnd(e) {
+    function handleTouchEnd() {
       if (isSnapping) return;
 
-      const scrollEndY = window.scrollY;
-      const scrollDiff = scrollEndY - scrollStartY;
-      const { section: currentSection, index: currentIndex } = getCurrentSection();
+      const viewportHeight = window.innerHeight;
+      const thresholdFromBottom = viewportHeight * (1 - VIEWPORT_THRESHOLD); // 80% desde arriba = 20% desde abajo
+      const thresholdFromTop = viewportHeight * VIEWPORT_THRESHOLD; // 20% desde arriba
 
-      if (!currentSection) return;
-
-      const sectionHeight = currentSection.getBoundingClientRect().height;
-      const scrollThreshold = sectionHeight * SCROLL_THRESHOLD;
-
-      // Scroll hacia abajo (20% o más)
-      if (scrollDiff > scrollThreshold && currentIndex < sections.length - 1) {
-        isSnapping = true;
-        const nextSection = sections[currentIndex + 1];
+      // Buscar si alguna sección cumple las condiciones de snap
+      for (let i = 0; i < sections.length; i++) {
+        const currentSection = sections[i];
+        const rect = currentSection.getBoundingClientRect();
         
-        scrollToSection(nextSection);
+        // SNAP HACIA ABAJO: la parte superior de la siguiente sección superó el 20% desde abajo
+        if (i < sections.length - 1) {
+          const nextSection = sections[i + 1];
+          const nextRect = nextSection.getBoundingClientRect();
+          const nextSectionTop = nextRect.top;
 
-        setTimeout(() => {
-          isSnapping = false;
-        }, 800);
-      }
-      // Scroll hacia arriba (20% o más)
-      else if (scrollDiff < -scrollThreshold && currentIndex > 0) {
-        isSnapping = true;
-        const prevSection = sections[currentIndex - 1];
-        
-        scrollToSection(prevSection);
+          // Si el top de la siguiente sección está entre el 80% y 100% del viewport (pasó el 20% desde abajo)
+          if (nextSectionTop > 0 && nextSectionTop < thresholdFromBottom) {
+            isSnapping = true;
+            
+            scrollToSection(nextSection);
 
-        setTimeout(() => {
-          isSnapping = false;
-        }, 800);
+            setTimeout(() => {
+              isSnapping = false;
+            }, 800);
+            
+            return; // Salir después de hacer snap
+          }
+        }
+
+        // SNAP HACIA ARRIBA: la parte inferior de la sección anterior superó el 20% desde arriba
+        if (i > 0) {
+          const prevSection = sections[i - 1];
+          const prevRect = prevSection.getBoundingClientRect();
+          const prevSectionBottom = prevRect.bottom;
+
+          // Si el bottom de la sección anterior está entre 0 y 20% del viewport (pasó el 20% desde arriba)
+          if (prevSectionBottom > thresholdFromTop && prevSectionBottom < viewportHeight) {
+            isSnapping = true;
+            
+            scrollToSection(prevSection);
+
+            setTimeout(() => {
+              isSnapping = false;
+            }, 800);
+            
+            return; // Salir después de hacer snap
+          }
+        }
       }
-      // No supera el umbral: volver a la sección actual
-      else {
-        scrollToSection(currentSection);
-      }
+
+      // Si no se cumple ninguna condición, el scroll queda libre
     }
 
-    // Agregar listeners
-    document.addEventListener('touchstart', handleTouchStart, { passive: true });
+    // Agregar listener
     document.addEventListener('touchend', handleTouchEnd, { passive: true });
 
     // Cleanup al cambiar a desktop
     const handleResize = () => {
       if (window.innerWidth > 768) {
-        document.removeEventListener('touchstart', handleTouchStart);
         document.removeEventListener('touchend', handleTouchEnd);
         window.removeEventListener('resize', handleResize);
       }
