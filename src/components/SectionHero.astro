@@ -205,6 +205,10 @@ import Modal from "./Modal.astro";
   }
 
   @media (max-width: 768px) {
+    .wrapper {
+      padding: 0;
+    }
+
     p {
       font-size: 14px;
     }
@@ -216,35 +220,33 @@ import Modal from "./Modal.astro";
 
     .hero-image-wrapper {
       padding: 0 20px;
-      overflow: visible;
-      min-height: auto;
-      margin-top: 25%;
+      overflow: hidden;
     }
 
     .hero-parallax {
-      height: auto;
       overflow: visible;
+      min-width: 600px;
     }
 
     .hero-parallax img {
       object-fit: contain;
-      width: auto;
     }
 
     .hero-center {
-      height: 250px;
+      width: 450px;
+      max-width: 90vw;
       left: 50%;
       transform: translateX(-50%);
     }
 
     .hero-mid-left {
-      height: 180px;
+      width: 280px;
       left: 15%;
       transform: translateX(-30%);
     }
 
     .hero-mid-right {
-      height: 180px;
+      width: 350px;
       left: 85%;
       transform: translateX(-75%);
     }
