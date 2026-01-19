@@ -10,124 +10,34 @@ import Strategies from "./SectionStrategies.astro";
 ---
 
 <main>
-  <section class="main-section-hero snap-section">
+  <section class="main-section-hero">
     <Hero />
   </section>
-  <section class="main-section-strategies snap-section">
+  <section class="main-section-strategies">
     <Strategies />
   </section>
-  <section class="main-section-features snap-section">
+  <section class="main-section-features">
     <Features />
   </section>
-  <section class="main-section-presentation snap-section">
+  <section class="main-section-presentation">
     <Presentation />
   </section>
-  <section class="main-section-carousel snap-section">
+  <section class="main-section-carousel">
     <Carousel />
   </section>
-  <section class="main-section-capabilities snap-section">
+  <section class="main-section-capabilities">
     <Capabilities />
   </section>
-  <section class="main-section-faq snap-section">
+  <section class="main-section-faq">
     <Faq />
   </section>
-  <section class="main-section-form snap-section">
+  <section class="main-section-form">
     <Form />
   </section>
   <div class="scroll-down" id="scrollDown">
     <span class="pi pi-arrow-down"></span>
   </div>
 </main>
-
-<!-- <script>
-  const VIEWPORT_THRESHOLD = 0.2;
-  const SNAP_OFFSET = -200;
-  let isSnapping = false;
-
-  function initTouchSnap() {
-    if (window.innerWidth > 768) return;
-
-    const sections = Array.from(document.querySelectorAll('.snap-section'));
-
-    function scrollToSection(section) {
-      const sectionTop = section.getBoundingClientRect().top + window.scrollY;
-      const targetScroll = sectionTop + SNAP_OFFSET;
-
-      window.scrollTo({ 
-        top: targetScroll,
-        behavior: 'smooth'
-      });
-    }
-
-    // Al soltar el touch
-    function handleTouchEnd() {
-      if (isSnapping) return;
-
-      const viewportHeight = window.innerHeight;
-      const thresholdFromBottom = viewportHeight * (1 - VIEWPORT_THRESHOLD);
-      const thresholdFromTop = viewportHeight * VIEWPORT_THRESHOLD;
-
-      for (let i = 0; i < sections.length; i++) {
-        const currentSection = sections[i];
-        const rect = currentSection.getBoundingClientRect();
-        
-        if (i < sections.length - 1) {
-          const nextSection = sections[i + 1];
-          const nextRect = nextSection.getBoundingClientRect();
-          const nextSectionTop = nextRect.top;
-
-          if (nextSectionTop > 0 && nextSectionTop < thresholdFromBottom) {
-            isSnapping = true;
-            
-            scrollToSection(nextSection);
-
-            setTimeout(() => {
-              isSnapping = false;
-            }, 800);
-            
-            return;
-          }
-        }
-
-        if (i > 0) {
-          const prevSection = sections[i - 1];
-          const prevRect = prevSection.getBoundingClientRect();
-          const prevSectionBottom = prevRect.bottom;
-
-          if (prevSectionBottom > thresholdFromTop && prevSectionBottom < viewportHeight) {
-            isSnapping = true;
-            
-            scrollToSection(prevSection);
-
-            setTimeout(() => {
-              isSnapping = false;
-            }, 800);
-            
-            return;
-          }
-        }
-      }
-
-    }
-
-    document.addEventListener('touchend', handleTouchEnd, { passive: true });
-
-    const handleResize = () => {
-      if (window.innerWidth > 768) {
-        document.removeEventListener('touchend', handleTouchEnd);
-        window.removeEventListener('resize', handleResize);
-      }
-    };
-
-    window.addEventListener('resize', handleResize);
-  }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initTouchSnap);
-  } else {
-    initTouchSnap();
-  }
-</script> -->
 
 <style>
   main {
