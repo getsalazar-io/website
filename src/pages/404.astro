@@ -3,13 +3,18 @@ import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import Layout from "../layouts/default.astro";
 import { t } from "i18next";
+import { localizePath } from '../utils/localizePath';
+
+// Detectar el idioma actual de la URL
+const pathParts = Astro.url.pathname.split('/').filter(Boolean);
+const currentLocale = pathParts[0] === 'it' ? 'it' : 'en';
 ---
 
 <Layout title={t("layout.title")} description={t("layout.description")}>
   <main class="error-page">
     <Header>
       <Fragment slot="button">
-        <a href="/" class="link-btn"
+        <a href={localizePath("/", currentLocale)} class="link-btn"
           ><span class="pi pi-arrow-circle-left"></span>{t("404:button")}</a
         >
       </Fragment>

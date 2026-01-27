@@ -4,13 +4,20 @@ import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import Layout from "../layouts/default.astro";
 import { t } from "i18next";
+import { localizePath } from "../utils/localizePath";
+
+// Detectar el idioma actual de la URL
+const pathParts = Astro.url.pathname.split("/").filter(Boolean);
+const currentLocale = pathParts[0] === "it" ? "it" : "en";
 ---
 
 <Layout>
   <Header>
     <Fragment slot="button">
-      <a href="/#form-container" id="link-button-demo" class="link-btn"
-        >{t("button.demo")}</a
+      <a
+        href={localizePath("/#form-container", currentLocale)}
+        id="link-button-demo"
+        class="link-btn">{t("button.demo")}</a
       >
     </Fragment>
   </Header>
@@ -22,7 +29,7 @@ import { t } from "i18next";
             <a
               class="link-btn"
               id="link-btn-back"
-              href="/"
+              href={localizePath("/", currentLocale)}
               aria-label={t("cookie:cookie-back")}
             >
               <span><i class="pi pi-arrow-left" aria-hidden="true"></i></span>
@@ -59,6 +66,10 @@ import { t } from "i18next";
         rgba(98, 186, 243, 0.08) 93.3%,
         rgba(98, 186, 243, 0) 100%
       );
+      min-height: calc(100vh - 88px);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
     .link-btn {
       appearance: none;
