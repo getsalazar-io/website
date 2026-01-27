@@ -1,4 +1,4 @@
-// @ts-check
+// @ts-ignore
 import { defineConfig } from "astro/config";
 import astroI18next from "astro-i18next";
 import compress from "astro-compress";
@@ -34,4 +34,6 @@ export default defineConfig({
       Image: false,
     }),
   ],
+  // Añadir esto para desarrollo
+  trailingSlash: "ignore",
 });

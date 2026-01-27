@@ -8,15 +8,24 @@ export default {
   routing: {
     prefixDefaultLocale: false,
   },
+  routes: {
+    it: {
+      // Mapear las rutas en italiano
+      "": "",  // Home
+      "policy": "policy",
+      "cookie": "cookie",
+    },
+  },
   i18nextServer: {
     debug: false,
   },
   i18nextClient: {
     debug: false,
     detection: {
-      order: ['localStorage', 'navigator', 'htmlTag'],
+      order: ['path', 'localStorage', 'navigator'],
       caches: ['localStorage'],
       lookupLocalStorage: 'i18nextLng',
+      lookupFromPathIndex: 0,
     },
   },
 };

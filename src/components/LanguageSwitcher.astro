@@ -1,7 +1,4 @@
 ---
-/* import { localizePath } from "astro-i18next";
-import { t } from "i18next"; */
-
 const currentLocale = Astro.currentLocale || "en";
 
 const languages = [
@@ -97,15 +94,11 @@ const currentLanguage =
     box-shadow: 0px 0px 0px 2.8px #60a5fa33;
   }
 
-  .flag {
-    font-size: 1.25rem;
-  }
-
   .chevron {
     transition: transform 0.2s;
   }
 
-  .language-button[aria-expanded="true"] .chevron {
+  .language-button[aria-expanded="true"] .pi-chevron-down {
     transform: rotate(180deg);
   }
 
@@ -117,10 +110,9 @@ const currentLanguage =
     background: #1f2937;
     border-radius: 0.5rem;
     overflow: hidden;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 4px 10px -4px #00000033;
     z-index: 50;
     animation: slideDown 0.2s ease-out;
-    box-shadow: 0px 4px 10px -4px #00000033;
     padding-top: 10px;
   }
 
@@ -157,10 +149,6 @@ const currentLanguage =
   .language-option.active {
     background: #60a5fa29;
     font-weight: bold;
-  }
-
-  .check-icon {
-    margin-left: auto;
   }
 
   /* Mobile Drawer */
@@ -234,7 +222,7 @@ const currentLanguage =
   }
 
   .drawer-option.active {
-    background: #60A5FA29;
+    background: #60a5fa29;
     font-weight: bold;
   }
 
@@ -274,57 +262,14 @@ const currentLanguage =
 </style>
 
 <script>
+
   function initLanguageSwitcher() {
     const button = document.getElementById("language-button");
     const dropdown = document.getElementById("language-dropdown");
     const drawer = document.getElementById("language-drawer");
-    const drawerClose = document.getElementById("drawer-close");
     const drawerOverlay = drawer?.querySelector(".drawer-overlay");
-    const languageNameEl = document.getElementById("current-language-name");
 
     const isMobile = () => window.innerWidth < 768;
-
-    // Función para actualizar la UI según el idioma activo
-    const updateUIForLanguage = (activeLocale: string) => {
-      const allOptions = document.querySelectorAll("[data-locale]");
-      
-      allOptions.forEach((option) => {
-        const optionLocale = option.getAttribute("data-locale");
-        const optionLabel = option.getAttribute("data-locale-label");
-        const checkIcon = option.querySelector(".pi-check");
-        
-        if (optionLocale === activeLocale) {
-          // Activar esta opción
-          option.classList.add("active");
-          
-          // Añadir check si no existe
-          if (!checkIcon) {
-            const icon = document.createElement("i");
-            icon.className = "pi pi-check";
-            option.insertBefore(icon, option.firstChild);
-          }
-          
-          // Actualizar el label del botón
-          if (languageNameEl && optionLabel) {
-            languageNameEl.textContent = optionLabel;
-          }
-        } else {
-          // Desactivar otras opciones
-          option.classList.remove("active");
-          
-          // Remover check si existe
-          if (checkIcon) {
-            checkIcon.remove();
-          }
-        }
-      });
-    };
-
-    // Al cargar, verificar si hay un idioma guardado diferente al que muestra el servidor
-    const storedLanguage = localStorage.getItem("i18nextLng");
-    if (storedLanguage) {
-      updateUIForLanguage(storedLanguage);
-    }
 
     // Toggle language selector
     button?.addEventListener("click", () => {
@@ -361,16 +306,34 @@ const currentLanguage =
       document.body.style.overflow = "";
     };
 
-    drawerClose?.addEventListener("click", closeDrawer);
     drawerOverlay?.addEventListener("click", closeDrawer);
 
     // Handle language change
     const handleLanguageChange = (locale: string) => {
-      // Guardar preferencia en localStorage
+      // Guardar preferencia
       localStorage.setItem("i18nextLng", locale);
       
-      // Recargar la página
-      window.location.reload();
+      // Obtener la ruta actual
+      const currentPath = window.location.pathname;
+      const currentSearch = window.location.search;
+      const currentHash = window.location.hash;
+      
+      // Construir la nueva ruta
+      let newPath = currentPath;
+      
+      // Remover el prefijo de idioma actual si existe
+      newPath = newPath.replace(/^\/it(\/|$)/, '/');
+      
+      // Añadir el nuevo prefijo si es italiano
+      if (locale === 'it') {
+        newPath = '/it' + newPath;
+      }
+      
+      // Asegurar que la ruta no termine con /index
+      newPath = newPath.replace(/\/index$/, '');
+      
+      // Navegar a la nueva URL
+      window.location.href = newPath + currentSearch + currentHash;
     };
 
     // Add click handlers to all language options

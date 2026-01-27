@@ -1,11 +1,18 @@
 ---
 import "primeicons/primeicons.css";
-import { t } from "i18next";
+import { t, changeLanguage } from "i18next";
 import { HeadHrefLangs } from "astro-i18next/components";
+
+// Detectar el idioma de la URL
+const pathParts = Astro.url.pathname.split("/").filter(Boolean);
+const currentLocale = pathParts[0] === "it" ? "it" : "en";
+
+// Asegurar que i18next usa el idioma correcto
+changeLanguage(currentLocale);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={currentLocale}>
   <head>
     <link rel="preconnect" href="https://googletagmanager.com" />
     <link rel="preconnect" href="https://js.hsforms.net" />
@@ -52,6 +59,8 @@ import { HeadHrefLangs } from "astro-i18next/components";
       property="twitter:image"
       content="https://getsalazar.io/images/social-preview.webp"
     />
+    <HeadHrefLangs />
+
     <!-- Google Tag Manager -->
     <script async>
       (function (w, d, s, l, i) {
@@ -66,6 +75,7 @@ import { HeadHrefLangs } from "astro-i18next/components";
       })(window, document, "script", "dataLayer", "GTM-ND7HKQ76");
     </script>
     <!-- End Google Tag Manager -->
+
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -113,7 +123,7 @@ import { HeadHrefLangs } from "astro-i18next/components";
                 "name": "Can Salazar trigger remediation?",
                 "acceptedAnswer": {
                   "@type": "Answer",
-                  "text": "Salazar doesn’t remediate, it exposes gaps through APIs. ITSM tools can easily integrate and take actions."
+                  "text": "Salazar doesn't remediate, it exposes gaps through APIs. ITSM tools can easily integrate and take actions."
                 }
               },
               {
@@ -149,10 +159,11 @@ import { HeadHrefLangs } from "astro-i18next/components";
   </head>
   <body>
     <div class="background-image"></div>
-    <HeadHrefLangs />
     <slot />
   </body>
 </html>
+
+<!-- Estilos sin cambios -->
 
 <style is:global>
   :root {

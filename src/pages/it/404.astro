@@ -1,0 +1,118 @@
+---
+import Footer from "../../components/Footer.astro";
+import Header from "../../components/Header.astro";
+import Layout from "../../layouts/default.astro";
+import { t } from "i18next";
+import { changeLanguage } from "i18next";
+
+changeLanguage('it');
+---
+
+<Layout title={t("layout.title")} description={t("layout.description")}>
+  <main class="error-page">
+    <Header>
+      <Fragment slot="button">
+        <a href="/" class="link-btn"
+          ><span class="pi pi-arrow-circle-left"></span>{t("404:button")}</a
+        >
+      </Fragment>
+    </Header>
+    <div class="container">
+      <h1>404</h1>
+      <h2>{t("404:title")}</h2>
+      <p>{t("404:subtitle")}</p>
+    </div>
+    <Footer />
+    <img
+      src="/images/bg_planet_Hero.webp"
+      class="planet-small"
+      alt={t("404:layout.altBig")}
+    />
+    <img
+      src="/images/bg_planet_Hero.webp"
+      class="planet-big"
+      alt={t("404:layout.altSmall")}
+    />
+  </main>
+</Layout>
+
+<style is:global>
+  .background-image {
+    top: -100px;
+    min-width: 100vw;
+    height: 100%;
+    background-position: top center;
+    background-size: cover;
+  }
+
+  .link-btn {
+    appearance: none;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 6px;
+    padding-block: 10px;
+    padding-inline: 16px;
+    font-size: 14px;
+    font-weight: 400;
+    margin-right: 10px;
+    transition: all 0.3s ease-out;
+    background-color: rgb(var(--highlight));
+    color: #1d1e27;
+  }
+
+  .link-btn:hover {
+    cursor: pointer;
+    scale: 1.05;
+    box-shadow: 0 0 40px 9px #2a4556;
+    color: #1d1e27;
+  }
+
+  .error-page {
+    height: 100vh;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  h1 {
+    color: #62baf3;
+    font-size: 96px;
+    font-weight: bold;
+  }
+
+  h2 {
+    font-size: 28px;
+    font-weight: 500;
+  }
+
+  p {
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .planet-small {
+    position: absolute;
+    height: 111px;
+    left: 75%;
+    top: 17.5%;
+  }
+
+  .planet-big {
+    position: absolute;
+    height: 500px;
+    bottom: -20%;
+    left: 0;
+  }
+</style>
