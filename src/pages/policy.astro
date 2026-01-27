@@ -6,7 +6,6 @@ import Layout from "../layouts/default.astro";
 import { t } from "i18next";
 import { localizePath } from '../utils/localizePath';
 
-// Detectar el idioma actual de la URL
 const pathParts = Astro.url.pathname.split('/').filter(Boolean);
 const currentLocale = pathParts[0] === 'it' ? 'it' : 'en';
 ---

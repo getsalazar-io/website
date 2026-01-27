@@ -3,17 +3,75 @@ import "primeicons/primeicons.css";
 import { t, changeLanguage } from "i18next";
 import { HeadHrefLangs } from "astro-i18next/components";
 
-// Detectar el idioma de la URL
 const pathParts = Astro.url.pathname.split("/").filter(Boolean);
 const currentLocale = pathParts[0] === "it" ? "it" : "en";
 
-// Asegurar que i18next usa el idioma correcto
 changeLanguage(currentLocale);
 ---
 
 <!doctype html>
 <html lang={currentLocale}>
   <head>
+    <script is:inline>
+      (function () {
+        function getCurrentLocaleFromURL() {
+          const pathParts = window.location.pathname.split("/").filter(Boolean);
+          return pathParts[0] === "it" ? "it" : "en";
+        }
+
+        function getBrowserLanguage() {
+          const browserLang = navigator.language || navigator.userLanguage;
+          const langCode = browserLang.split("-")[0].toLowerCase();
+          return langCode === "it" ? "it" : "en";
+        }
+
+        function buildLocalizedURL(targetLocale) {
+          let currentPath = window.location.pathname;
+          const currentSearch = window.location.search;
+          const currentHash = window.location.hash;
+
+          currentPath = currentPath.replace(/^\/it(\/|$)/, "/");
+
+          let newPath;
+          if (targetLocale === "it") {
+            newPath = "/it" + currentPath;
+          } else {
+            newPath = currentPath;
+          }
+
+          newPath = newPath.replace(/\/+/g, "/");
+
+          return newPath + currentSearch + currentHash;
+        }
+
+        const urlLocale = getCurrentLocaleFromURL();
+
+        let savedLocale = null;
+        try {
+          savedLocale = localStorage.getItem("i18nextLng");
+        } catch (e) {
+        }
+
+        let targetLocale;
+
+        if (savedLocale && (savedLocale === "en" || savedLocale === "it")) {
+          targetLocale = savedLocale;
+        } else {
+          targetLocale = getBrowserLanguage();
+
+          try {
+            localStorage.setItem("i18nextLng", targetLocale);
+          } catch (e) {
+          }
+        }
+
+        if (targetLocale !== urlLocale) {
+          const newURL = buildLocalizedURL(targetLocale);
+          window.location.replace(newURL);
+        }
+      })();
+    </script>
+
     <link rel="preconnect" href="https://googletagmanager.com" />
     <link rel="preconnect" href="https://js.hsforms.net" />
     <link rel="dns-prefetch" href="https://consent.cookiebot.com" />
@@ -162,8 +220,6 @@ changeLanguage(currentLocale);
     <slot />
   </body>
 </html>
-
-<!-- Estilos sin cambios -->
 
 <style is:global>
   :root {

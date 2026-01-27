@@ -1,5 +1,6 @@
 ---
-const currentLocale = Astro.currentLocale || "en";
+const pathParts = Astro.url.pathname.split("/").filter(Boolean);
+const currentLocale = pathParts[0] === "it" ? "it" : "en";
 
 const languages = [
   { code: "en", name: "English", label: "ENG" },
@@ -18,11 +19,12 @@ const currentLanguage =
     aria-expanded="false"
   >
     <i class="pi pi-globe"></i>
-    <span class="language-name" id="current-language-name">{currentLanguage.label}</span>
+    <span class="language-name" id="current-language-name"
+      >{currentLanguage.label}</span
+    >
     <i class="pi pi-chevron-down"></i>
   </button>
 
-  <!-- Desktop Dropdown -->
   <div id="language-dropdown" class="language-dropdown" hidden>
     {
       languages.map((lang) => (
@@ -42,7 +44,6 @@ const currentLanguage =
     }
   </div>
 
-  <!-- Mobile Drawer -->
   <div id="language-drawer" class="language-drawer" hidden>
     <div class="drawer-overlay"></div>
     <div class="drawer-content">
@@ -102,7 +103,6 @@ const currentLanguage =
     transform: rotate(180deg);
   }
 
-  /* Desktop Dropdown */
   .language-dropdown {
     position: absolute;
     top: calc(100%);
@@ -151,7 +151,6 @@ const currentLanguage =
     font-weight: bold;
   }
 
-  /* Mobile Drawer */
   .language-drawer {
     position: fixed;
     top: 0;
@@ -237,7 +236,6 @@ const currentLanguage =
     font-weight: 500;
   }
 
-  /* Hide drawer on desktop, hide dropdown on mobile */
   @media (min-width: 768px) {
     .language-drawer {
       display: none !important;
@@ -262,7 +260,6 @@ const currentLanguage =
 </style>
 
 <script>
-
   function initLanguageSwitcher() {
     const button = document.getElementById("language-button");
     const dropdown = document.getElementById("language-dropdown");
@@ -271,7 +268,14 @@ const currentLanguage =
 
     const isMobile = () => window.innerWidth < 768;
 
-    // Toggle language selector
+    const getCurrentLocaleFromURL = () => {
+      const pathParts = window.location.pathname.split("/").filter(Boolean);
+      return pathParts[0] === "it" ? "it" : "en";
+    };
+
+    const currentLocale = getCurrentLocaleFromURL();
+    localStorage.setItem("i18nextLng", currentLocale);
+
     button?.addEventListener("click", () => {
       if (isMobile()) {
         drawer?.removeAttribute("hidden");
@@ -288,7 +292,6 @@ const currentLanguage =
       }
     });
 
-    // Close dropdown when clicking outside
     document.addEventListener("click", (e) => {
       if (
         !isMobile() &&
@@ -300,7 +303,6 @@ const currentLanguage =
       }
     });
 
-    // Close drawer
     const closeDrawer = () => {
       drawer?.setAttribute("hidden", "");
       document.body.style.overflow = "";
@@ -308,35 +310,27 @@ const currentLanguage =
 
     drawerOverlay?.addEventListener("click", closeDrawer);
 
-    // Handle language change
     const handleLanguageChange = (locale: string) => {
-      // Guardar preferencia
       localStorage.setItem("i18nextLng", locale);
-      
-      // Obtener la ruta actual
-      const currentPath = window.location.pathname;
+
+      let currentPath = window.location.pathname;
       const currentSearch = window.location.search;
       const currentHash = window.location.hash;
-      
-      // Construir la nueva ruta
-      let newPath = currentPath;
-      
-      // Remover el prefijo de idioma actual si existe
-      newPath = newPath.replace(/^\/it(\/|$)/, '/');
-      
-      // Añadir el nuevo prefijo si es italiano
-      if (locale === 'it') {
-        newPath = '/it' + newPath;
+
+      currentPath = currentPath.replace(/^\/it(\/|$)/, "/");
+
+      let newPath;
+      if (locale === "it") {
+        newPath = "/it" + currentPath;
+      } else {
+        newPath = currentPath;
       }
-      
-      // Asegurar que la ruta no termine con /index
-      newPath = newPath.replace(/\/index$/, '');
-      
-      // Navegar a la nueva URL
+
+      newPath = newPath.replace(/\/+/g, "/");
+
       window.location.href = newPath + currentSearch + currentHash;
     };
 
-    // Add click handlers to all language options
     const allOptions = document.querySelectorAll("[data-locale]");
     allOptions.forEach((option) => {
       option.addEventListener("click", () => {
@@ -348,9 +342,7 @@ const currentLanguage =
     });
   }
 
-  // Initialize on page load
   initLanguageSwitcher();
 
-  // Re-initialize after page transitions (if using view transitions)
   document.addEventListener("astro:after-swap", initLanguageSwitcher);
 </script>
