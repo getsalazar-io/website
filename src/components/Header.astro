@@ -1,6 +1,7 @@
 ---
 import { t } from "i18next";
 import Logo from "../assets/logo_salazar.svg";
+import LanguageSwitcher from "./LanguageSwitcher.astro";
 ---
 <header class="header">
   <div class="header-top">
@@ -8,7 +9,10 @@ import Logo from "../assets/logo_salazar.svg";
       <Logo height={32} width={130} />
     </div>
     <p class="header-text">{t("header.text")}</p>
-    <slot name="button" />
+    <div class="header-actions">
+      <slot name="button" />
+      <LanguageSwitcher />
+    </div>
   </div>
 </header>
 <style>
@@ -39,6 +43,12 @@ import Logo from "../assets/logo_salazar.svg";
     border-top: 0.025rem solid #5d8caa;
     border-bottom: 0.025rem solid rgb(68, 68, 68);
   }
+
+  .header-actions {
+    display: flex;
+    gap: 12px;
+  }
+
   .header-top {
     width: 100%;
     display: flex;

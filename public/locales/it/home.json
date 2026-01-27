@@ -1,0 +1,230 @@
+{
+  "salazar": {
+    "title": "Salazar | Scopri la tua vera resilienza e RPO/RTO reali"
+  },
+  "button": {
+    "demo": "Prenota una demo",
+    "more": "Scopri di più su Salazar",
+    "try": "Prova Salazar oggi",
+    "homepage": "Vai alla homepage di Salazar",
+    "next": "Vai alla sezione successiva"
+  },
+  "icon": {
+    "previous": "Precedente",
+    "next": "Successivo"
+  },
+  "header": {
+    "text": "Soluzione di Cyber Resilienza per Governance e Conformità"
+  },
+  "images": {
+    "planetBig": "Immagine di sfondo del pianeta grande",
+    "planetSmall": "Immagine di sfondo del pianeta piccolo"
+  },
+  "section": {
+    "hero": {
+      "header": "La tua vera resilienza IT, finalmente unificata",
+      "subheader": "Salazar identifica cosa è veramente recuperabile... e cosa si presume lo sia",
+      "paragraph": "Unifica il tuo panorama di backup, scopri il tuo vero RPO/RTO ed evidenzia le priorità.",
+      "alt-text": "Alcuni mock dell'app Salazar",
+      "modal-alt": "Il tuo browser non supporta questo elemento video."
+    },
+    "presentation": {
+      "header": "La conformità sta prosciugando il tempo del tuo team?",
+      "subheader": "Controllo e responsabilità, esposti chiaramente"
+    },
+    "challenge": {
+      "header": "Superare le sfide della gestione IT",
+      "subheader": "La sfida",
+      "paragraph": "La continuità aziendale dipende dalla resilienza e proteggere i dati è ora più critico che mai. Senza un approccio integrato, probabilmente stai affrontando:",
+      "paragraph-2": "Non lasciare che queste sfide ti rallentino",
+      "card": {
+        "card-1": {
+          "header": "Visibilità \nLimitata",
+          "subheader": "01",
+          "paragraph": "Difficoltà ad ottenere una visione completa del tuo ambiente IT"
+        },
+        "card-2": {
+          "header": "Impatti degli \nAttacchi",
+          "subheader": "02",
+          "paragraph": "Impossibilità di guidare le attività di sicurezza. Non puoi eseguire scenari di attacco dimostrativi e non puoi determinare completamente gli impatti degli attacchi"
+        },
+        "card-3": {
+          "header": "Requisiti di \nAudit",
+          "subheader": "03",
+          "paragraph": "Superare pesanti controlli di conformità dei backup che distolgono la tua attenzione dalle attività principali"
+        }
+      }
+    },
+    "solution": {
+      "subheader": "La soluzione",
+      "header": "<1>Salazar</1> La tua soluzione completa",
+      "paragraph": "Salazar raccoglie informazioni da più fornitori in un unico posto, rendendo la gestione IT più semplice che mai",
+      "paragraph-2": "Pronto a mettere sotto controllo il tuo IT?",
+      "card": {
+        "card-1": {
+          "header": "Backup Modernizzati",
+          "paragraph": "RPO (Recovery Point Objective) e RTO (Recovery Time Objective) affidabili per una sicurezza dei dati senza interruzioni"
+        },
+        "card-2": {
+          "header": "Risorse Ottimizzate",
+          "paragraph": "Visibilità completa del tuo panorama IT per una gestione efficiente delle risorse"
+        },
+        "card-3": {
+          "header": "Cybersecurity",
+          "paragraph": "Aumenta la maturità e la preparazione contro le minacce"
+        },
+        "card-4": {
+          "header": "IT Allineato al Business",
+          "paragraph": "Dai priorità ai servizi IT in base all'impatto aziendale e migliora il disaster recovery"
+        },
+        "card-5": {
+          "header": "Team Piccoli Potenziati",
+          "paragraph": "Equipaggia i team più piccoli con gli strumenti necessari per gestire e controllare senza sforzo ogni aspetto delle operazioni IT"
+        }
+      }
+    },
+    "challenges": {
+      "header": "Come Salazar risolve le sfide IT del mondo reale",
+      "subheader": "Impatto reale, scenari reali",
+      "paragraph": "Salazar si adatta al tuo ambiente e alle tue priorità, fornendo valore a team, sistemi e framework di gestione del rischio aziendale.",
+      "paragraph-2": "Non lasciare che queste sfide ti rallentino",
+      "card": {
+        "card-1": {
+          "header": "Conosci il tuo reale rischio RPO e RTO",
+          "subheader": "Quando non conosci il tuo RPO e RTO, non conosci il tuo rischio.",
+          "paragraph": "Salazar mostra quanti dati potresti perdere (RPO) e quanto tempo impiegherebbe ogni servizio per recuperare (RTO). \nQuando conosci il tuo RPO e RTO, puoi agire—migliorando le strategie di recupero e rafforzando la gestione del rischio aziendale. \nChe tu stia gestendo una macchina virtuale, un database o un file system, saprai sempre quanto è protetto—e dove migliorare."
+        },
+        "card-2": {
+          "header": "Integra RPO con CMDB e ITSM",
+          "subheader": "Mappa le risorse tecniche ai servizi logici e abilita operazioni più intelligenti.",
+          "paragraph": "Salazar collega le metriche RPO ai servizi aziendali, arricchendo il tuo CMDB e ITSM. \nAllinea le capacità di recupero con le priorità dei servizi attraverso i team IT e aziendali. \nConsenti a IT Manager, CISO e Service Manager di agire in modo proattivo attraverso l'auto-riparazione del sistema."
+        },
+        "card-3": {
+          "header": "Prendi Decisioni Basate sull'Esposizione Reale",
+          "subheader": "Agisci prima che gli incidenti diventino interruzioni.",
+          "paragraph": "Salazar aiuta a dare priorità alle strategie di recupero e agli investimenti infrastrutturali in base all'esposizione reale. \nIndividua punti deboli, risorse sottoprotette o configurazioni errate dei backup—e agisci prima che gli incidenti si trasformino in interruzioni. \nQuesta è governance quotidiana, non reazione alle emergenze."
+        }
+      }
+    },
+    "features": {
+      "header": "Come lo fa Salazar",
+      "card": {
+        "card-1": {
+          "title": "CONNETTI",
+          "description": "Acquisisce in modo fluido i **metadati** da piattaforme e strumenti di backup e utilizza le definizioni dei servizi aziendali dal **CMDB** tramite **API sicure**.",
+          "subtitle": "Inserendo nel CMDB segnali di recuperabilità reale, aderenza RPO/RTO e governance, integra l'affidabilità delle fonti con il contesto di protezione, rischio e conformità."
+        },
+        "card-2": {
+          "title": "MAPPA",
+          "description": "Traduci le risorse grezze in **servizi aziendali** (applicazioni, dipendenze e catene di ripristino) in modo da visualizzare la **recuperabilità** quando e dove serve.",
+          "subtitle": "La mappatura automatica delle dipendenze e i modelli di servizio visivi forniscono il contesto del livello di servizio di cui hai bisogno."
+        },
+        "card-3": {
+          "title": "GOVERNA",
+          "description": "**Convalida costantemente** la qualità della protezione, garantisci l'allineamento delle policy e mantieni la tua strategia di backup **conforme** e **responsabile**.",
+          "subtitle": "Governance fruibile con monitoraggio continuo, report di conformità chiari e integrazioni con strumenti di ticketing e automazione."
+        }
+      }
+    },
+    "form": {
+      "header": "Prenota una demo, guarda Salazar in azione",
+      "paragraph": "Una dimostrazione dal vivo in cui il nostro rappresentante ti illustrerà i valori che Salazar offre alle organizzazioni. Non aspettare il prossimo audit o la prossima interruzione. Inizia a gestire la tua strategia di backup oggi stesso."
+    },
+    "faq": {
+      "header": "Domande frequenti",
+      "question": {
+        "question-1": {
+          "title": "Quali tipologie di organizzazioni traggono maggiori vantaggi da Salazar?",
+          "description": "Salazar è ideale per le organizzazioni con ambienti di backup complessi e multi-vendor che necessitano di visibilità centralizzata, resilienza informatica misurabile e reporting a livello governance."
+        },
+        "question-2": {
+          "title": "Salazar può sostituire la mia soluzione di backup?",
+          "description": "No. Salazar è uno strumento di governance e gestione del rischio che mostra il livello di recuperabilità attuale dell'organizzazione, unificando RPO/RTO da diversi sistemi di backup."
+        },
+        "question-3": {
+          "title": "Salazar può attivare la correzione?",
+          "description": "Salazar non corregge, ma evidenzia le lacune tramite API. Gli strumenti ITSM possono integrarsi facilmente ed intervenire."
+        },
+        "question-4": {
+          "title": "Salazar supporta più fornitori di backup?",
+          "description": "Sì. Salazar supporta diversi fornitori di software di backup, consentendo di aggiungere nuove fonti di dati, sistemi di backup, ecc."
+        },
+        "question-5": {
+          "title": "Salazar valuta la replicazione?",
+          "description": "Non oggi. Salazar si concentra sulla recuperabilità dai backup, la base di ultima istanza per il ripristino."
+        },
+        "question-6": {
+          "title": "Come gestisce l'RTO?",
+          "description": "Salazar stima il potenziale RTO in base al tempo di backup completo dell'immagine più lungo della risorsa. Quindi calcola l'RTO per ciascuna risorsa e segnala eventuali disallineamenti con l'RTO dichiarato per i servizi corrispondenti."
+        }
+      }
+    },
+    "carousel": {
+      "items": {
+        "item-1": {
+          "legend": "Panoramica Generale",
+          "tooltip": "Uno sguardo veloce su qualsiasi problema"
+        },
+        "item-2": {
+          "legend": "Distribuzione RPO",
+          "tooltip": "Verifica come si comporta l'RPO dei tuoi Servizi"
+        },
+        "item-3": {
+          "legend": "Dettagli RPO del Servizio",
+          "tooltip": "Informazioni aggiornate dalle tue risorse"
+        },
+        "item-4": {
+          "legend": "Panoramica Economica del Gruppo di Servizi",
+          "tooltip": "Dai valore e conosci l'impatto economico"
+        },
+        "item-5": {
+          "legend": "Panoramica Economica",
+          "tooltip": "Conosci i tuoi servizi per valore"
+        },
+        "item-6": {
+          "legend": "Dettagli RTO del Servizio",
+          "tooltip": "Recovery time objective sempre sotto controllo"
+        }
+      }
+    },
+    "capabilities": {
+      "header": "Capacità di livello enterprise",
+      "list": {
+        "capability-1": "Controllo degli accessi basato sui ruoli (RBAC)",
+        "capability-2": "Motore di reporting personalizzabile",
+        "capability-3": "Architettura API-first",
+        "capability-4": "Single sign-on (SSO)",
+        "capability-5": "Registrazione completa dei log per gli audit",
+        "capability-6": "Integrazione con le operazioni di sicurezza - SecOps (ITSM, GRC, SIEM)"
+      }
+    },
+    "strategies": {
+      "header": "Le strategie di backup falliscono quando manca il controllo",
+      "items": {
+        "item-1": {
+          "title": "Processo di backup \"Riuscito\" ≠ backup recuperabile",
+          "description": "Spesso gli strumenti si concentrano sui processi e sulle risorse, non sui servizi aziendali che dovrebbero davvero proteggere"
+        },
+        "item-2": {
+          "title": "Gli RPO/RTO ipotizzati raramente corrispondono alla realtà",
+          "description": "Nel momento in cui ne hai bisogno, le ipotesi crollano"
+        },
+        "item-3": {
+          "title": "La definizione delle priorità è incerta",
+          "description": "I team risolvono prima ciò che vedono, non ciò che ha maggiore impatto sul business"
+        },
+        "item-4": {
+          "title": "La trappola dei costi",
+          "description": "I budget vengono allocati in modo errato quando le risorse non critiche sono eccessivamente protette ed al contrario i servizi critici per l'azienda non vengono protetti in modo adeguato"
+        }
+      }
+    }
+  },
+  "footer": {
+    "payoff": "SORINT.lab @ 2025. Tutti i diritti riservati.",
+    "cookie": "Cookie",
+    "privacy": "Privacy",
+    "aboutUs": "Chi Siamo",
+    "followUs": "Seguici su"
+  }
+}

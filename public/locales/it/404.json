@@ -1,0 +1,11 @@
+{
+  "title": "Pagina non trovata",
+  "subtitle": "Sembra che tu sia entrato in un territorio inesplorato.",
+  "button": "Torna alla Homepage",
+  "layout": {
+    "title": "404 - Pagina non trovata | GetSalazar",
+    "description": "La pagina che stai cercando non esiste",
+    "altBig": "Immagine di sfondo del pianeta grande",
+    "altSmall": "Immagine di sfondo del pianeta piccolo"
+  }
+}

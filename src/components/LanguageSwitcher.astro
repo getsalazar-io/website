@@ -1,0 +1,393 @@
+---
+/* import { localizePath } from "astro-i18next";
+import { t } from "i18next"; */
+
+const currentLocale = Astro.currentLocale || "en";
+
+const languages = [
+  { code: "en", name: "English", label: "ENG" },
+  { code: "it", name: "Italiano", label: "IT" },
+];
+
+const currentLanguage =
+  languages.find((lang) => lang.code === currentLocale) || languages[0];
+---
+
+<div class="language-switcher">
+  <button
+    id="language-button"
+    class="language-button"
+    aria-label="Change language"
+    aria-expanded="false"
+  >
+    <i class="pi pi-globe"></i>
+    <span class="language-name" id="current-language-name">{currentLanguage.label}</span>
+    <i class="pi pi-chevron-down"></i>
+  </button>
+
+  <!-- Desktop Dropdown -->
+  <div id="language-dropdown" class="language-dropdown" hidden>
+    {
+      languages.map((lang) => (
+        <button
+          class:list={[
+            "language-option",
+            { active: lang.code === currentLocale },
+          ]}
+          data-locale={lang.code}
+          data-locale-label={lang.label}
+          data-locale-name={lang.name}
+        >
+          {lang.code === currentLocale && <i class="pi pi-check" />}
+          <span>{lang.name}</span>
+        </button>
+      ))
+    }
+  </div>
+
+  <!-- Mobile Drawer -->
+  <div id="language-drawer" class="language-drawer" hidden>
+    <div class="drawer-overlay"></div>
+    <div class="drawer-content">
+      <div class="drawer-options">
+        {
+          languages.map((lang) => (
+            <button
+              class:list={[
+                "drawer-option",
+                { active: lang.code === currentLocale },
+              ]}
+              data-locale={lang.code}
+              data-locale-label={lang.label}
+              data-locale-name={lang.name}
+            >
+              {lang.code === currentLocale && <i class="pi pi-check" />}
+              <div class="option-content">
+                <span class="option-name">{lang.name}</span>
+              </div>
+            </button>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .language-switcher {
+    position: relative;
+  }
+
+  .language-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background: #111827;
+    border: 1px solid #60a5fa;
+    color: #ffffff99;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.875rem;
+    height: 40px;
+  }
+
+  .language-button:focus {
+    box-shadow: 0px 0px 0px 2.8px #60a5fa33;
+  }
+
+  .flag {
+    font-size: 1.25rem;
+  }
+
+  .chevron {
+    transition: transform 0.2s;
+  }
+
+  .language-button[aria-expanded="true"] .chevron {
+    transform: rotate(180deg);
+  }
+
+  /* Desktop Dropdown */
+  .language-dropdown {
+    position: absolute;
+    top: calc(100%);
+    left: 0;
+    background: #1f2937;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    z-index: 50;
+    animation: slideDown 0.2s ease-out;
+    box-shadow: 0px 4px 10px -4px #00000033;
+    padding-top: 10px;
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .language-option {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-size: 0.875rem;
+    text-align: left;
+    color: #ffffffde;
+  }
+
+  .language-option:hover {
+    background: #60a5fa29;
+  }
+
+  .language-option.active {
+    background: #60a5fa29;
+    font-weight: bold;
+  }
+
+  .check-icon {
+    margin-left: auto;
+  }
+
+  /* Mobile Drawer */
+  .language-drawer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 100;
+    animation: fadeIn 0.3s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .drawer-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  .drawer-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #1f2937;
+    border-radius: 6px 6px 0 0;
+    animation: slideUp 0.3s ease-out;
+    max-height: 80vh;
+    overflow-y: auto;
+    min-height: 30vh;
+    padding-top: 10px;
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+
+  .drawer-options {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .drawer-option {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #ffffffde;
+    border: none;
+  }
+
+  .drawer-option:hover {
+    background: #60a5fa29;
+  }
+
+  .drawer-option.active {
+    background: #60A5FA29;
+    font-weight: bold;
+  }
+
+  .option-content {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .option-name {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  /* Hide drawer on desktop, hide dropdown on mobile */
+  @media (min-width: 768px) {
+    .language-drawer {
+      display: none !important;
+    }
+    .language-name {
+      display: inline;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .language-dropdown {
+      display: none !important;
+    }
+    .language-name {
+      display: none;
+    }
+
+    .pi-chevron-down {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  function initLanguageSwitcher() {
+    const button = document.getElementById("language-button");
+    const dropdown = document.getElementById("language-dropdown");
+    const drawer = document.getElementById("language-drawer");
+    const drawerClose = document.getElementById("drawer-close");
+    const drawerOverlay = drawer?.querySelector(".drawer-overlay");
+    const languageNameEl = document.getElementById("current-language-name");
+
+    const isMobile = () => window.innerWidth < 768;
+
+    // Función para actualizar la UI según el idioma activo
+    const updateUIForLanguage = (activeLocale: string) => {
+      const allOptions = document.querySelectorAll("[data-locale]");
+      
+      allOptions.forEach((option) => {
+        const optionLocale = option.getAttribute("data-locale");
+        const optionLabel = option.getAttribute("data-locale-label");
+        const checkIcon = option.querySelector(".pi-check");
+        
+        if (optionLocale === activeLocale) {
+          // Activar esta opción
+          option.classList.add("active");
+          
+          // Añadir check si no existe
+          if (!checkIcon) {
+            const icon = document.createElement("i");
+            icon.className = "pi pi-check";
+            option.insertBefore(icon, option.firstChild);
+          }
+          
+          // Actualizar el label del botón
+          if (languageNameEl && optionLabel) {
+            languageNameEl.textContent = optionLabel;
+          }
+        } else {
+          // Desactivar otras opciones
+          option.classList.remove("active");
+          
+          // Remover check si existe
+          if (checkIcon) {
+            checkIcon.remove();
+          }
+        }
+      });
+    };
+
+    // Al cargar, verificar si hay un idioma guardado diferente al que muestra el servidor
+    const storedLanguage = localStorage.getItem("i18nextLng");
+    if (storedLanguage) {
+      updateUIForLanguage(storedLanguage);
+    }
+
+    // Toggle language selector
+    button?.addEventListener("click", () => {
+      if (isMobile()) {
+        drawer?.removeAttribute("hidden");
+        document.body.style.overflow = "hidden";
+      } else {
+        const isExpanded = button.getAttribute("aria-expanded") === "true";
+        button.setAttribute("aria-expanded", String(!isExpanded));
+
+        if (!isExpanded) {
+          dropdown?.removeAttribute("hidden");
+        } else {
+          dropdown?.setAttribute("hidden", "");
+        }
+      }
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener("click", (e) => {
+      if (
+        !isMobile() &&
+        !button?.contains(e.target as Node) &&
+        !dropdown?.contains(e.target as Node)
+      ) {
+        button?.setAttribute("aria-expanded", "false");
+        dropdown?.setAttribute("hidden", "");
+      }
+    });
+
+    // Close drawer
+    const closeDrawer = () => {
+      drawer?.setAttribute("hidden", "");
+      document.body.style.overflow = "";
+    };
+
+    drawerClose?.addEventListener("click", closeDrawer);
+    drawerOverlay?.addEventListener("click", closeDrawer);
+
+    // Handle language change
+    const handleLanguageChange = (locale: string) => {
+      // Guardar preferencia en localStorage
+      localStorage.setItem("i18nextLng", locale);
+      
+      // Recargar la página
+      window.location.reload();
+    };
+
+    // Add click handlers to all language options
+    const allOptions = document.querySelectorAll("[data-locale]");
+    allOptions.forEach((option) => {
+      option.addEventListener("click", () => {
+        const locale = option.getAttribute("data-locale");
+        if (locale) {
+          handleLanguageChange(locale);
+        }
+      });
+    });
+  }
+
+  // Initialize on page load
+  initLanguageSwitcher();
+
+  // Re-initialize after page transitions (if using view transitions)
+  document.addEventListener("astro:after-swap", initLanguageSwitcher);
+</script>

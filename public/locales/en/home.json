@@ -127,8 +127,8 @@
       }
     },
     "form": {
-      "header": "See it in action",
-      "paragraph": "Don't wait for the next audit—or outage. \nStart governing your backup strategy today."
+      "header": "Book a demo. See Salazar in Action!",
+      "paragraph": "A live demonstration in which our representative will take you through the values Salazar enables for organizations. Don't wait for the next audit—or outage. Start governing your backup strategy today."
     },
     "faq": {
       "header": "FAQ",
@@ -195,14 +195,14 @@
         "capability-3": "API-first architecture",
         "capability-4": "Single Sign-On (SSO)",
         "capability-5": "Full audit logging",
-        "capability-6": "Sec Ops integration (ITSM, GRC, SIEM)"
+        "capability-6": "SecOps integration (ITSM, GRC, SIEM)"
       }
     },
     "strategies": {
       "header": "Backup strategies fail when control is missing",
       "items": {
         "item-1": {
-          "title": "Backup Job “Success” ≠ recoverability",
+          "title": "Backup job “success” ≠ recoverability",
           "description": "Tools focus on jobs and assets, not on the business services they’re meant to protect"
         },
         "item-2": {
