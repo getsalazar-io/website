@@ -70,7 +70,7 @@ import Modal from "./Modal.astro";
   .wrapper {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 160px;
     width: 100%;
     position: relative;
     z-index: 2;
@@ -207,9 +207,16 @@ import Modal from "./Modal.astro";
     }
   }
 
+  @media (max-width: 1280px) {
+    .wrapper {
+      gap: 80px;
+    }
+  }
+
   @media (max-width: 768px) {
     .wrapper {
       padding: 0;
+      gap: 40px;
     }
 
     p {
@@ -324,7 +331,7 @@ import Modal from "./Modal.astro";
           if (heroParallax) {
             const translateY = Math.min(
               currentScrollY * PARALLAX_SPEED_HERO,
-              maxTranslate
+              maxTranslate,
             );
             heroParallax.style.transform = `translateY(${translateY}px)`;
           }
@@ -332,7 +339,7 @@ import Modal from "./Modal.astro";
           if (planetBig) {
             const translateY = Math.min(
               currentScrollY * PARALLAX_SPEED_PLANET_BIG,
-              maxTranslate
+              maxTranslate,
             );
             planetBig.style.transform = `translateY(${translateY}px)`;
           }
@@ -340,7 +347,7 @@ import Modal from "./Modal.astro";
           if (planetSmall) {
             const translateY = Math.min(
               currentScrollY * PARALLAX_SPEED_PLANET_SMALL,
-              maxTranslate
+              maxTranslate,
             );
             planetSmall.style.transform = `translateY(${translateY}px)`;
           }
