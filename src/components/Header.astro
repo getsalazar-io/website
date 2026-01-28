@@ -3,6 +3,7 @@ import { t } from "i18next";
 import Logo from "../assets/logo_salazar.svg";
 import LanguageSwitcher from "./LanguageSwitcher.astro";
 ---
+
 <header class="header">
   <div class="header-top">
     <div class="logo">
@@ -42,6 +43,19 @@ import LanguageSwitcher from "./LanguageSwitcher.astro";
     z-index: -1;
     border-top: 0.025rem solid #5d8caa;
     border-bottom: 0.025rem solid rgb(68, 68, 68);
+  }
+
+  @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+    header::before {
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+  }
+
+  @supports not ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
+    header::before {
+      background-color: rgba(255, 255, 255, 0.8);
+    }
   }
 
   .header-actions {
