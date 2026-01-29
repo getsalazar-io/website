@@ -15,7 +15,12 @@ const currentLocale = pathParts[0] === "it" ? "it" : "en";
         <div class="logo">
           <Logo height={32} width={130} aria-label="Salazar Logo" />
         </div>
-        <p>{t("footer.payoff")}</p>
+        <p>
+          {t("footer.prepayoff")}
+          <a href="www.sorint.com">Sorint.Lab</a> @ {new Date().getFullYear()}. {
+            t("footer.postpayoff")
+          }
+        </p>
       </div>
       <div class="footer-policy">
         <div>

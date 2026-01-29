@@ -221,7 +221,8 @@
     }
   },
   "footer": {
-    "payoff": "SORINT.lab @ 2025. All rights reserved.",
+    "prepayoff": "A product by",
+    "postpayoff": "All rights reserved.",
     "cookie": "Cookies",
     "privacy": "Privacy",
     "aboutUs": "About Us",
