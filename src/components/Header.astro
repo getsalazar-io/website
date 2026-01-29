@@ -62,12 +62,15 @@ import LanguageSwitcher from "./LanguageSwitcher.astro";
   .header-text {
     display: none;
   }
+
+  @media screen and (min-width: 1000px) {
+    .header-text {
+      display: block;
+    }
+  }
   @media screen and (min-width: 768px) {
     header {
       width: calc(100% - 80px);
-    }
-    .header-text {
-      display: block;
     }
   }
   @media screen and (max-width: 768px) {
