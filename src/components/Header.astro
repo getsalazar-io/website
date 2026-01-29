@@ -12,7 +12,9 @@ import LanguageSwitcher from "./LanguageSwitcher.astro";
     <p class="header-text">{t("header.text")}</p>
     <div class="header-actions">
       <slot name="button" />
-      <LanguageSwitcher />
+      <div class="header-switcher">
+        <LanguageSwitcher />
+      </div>
     </div>
   </div>
 </header>
@@ -71,6 +73,9 @@ import LanguageSwitcher from "./LanguageSwitcher.astro";
   @media screen and (max-width: 768px) {
     header {
       width: calc(100% - 32px);
+    }
+    .header-switcher {
+      display: none;
     }
   }
 </style>

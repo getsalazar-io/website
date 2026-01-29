@@ -1,10 +1,11 @@
 ---
 import Logo from "../assets/logo_salazar.svg";
 import { t } from "i18next";
-import { localizePath } from '../utils/localizePath';
+import { localizePath } from "../utils/localizePath";
+import LanguageSwitcher from "./LanguageSwitcher.astro";
 
-const pathParts = Astro.url.pathname.split('/').filter(Boolean);
-const currentLocale = pathParts[0] === 'it' ? 'it' : 'en';
+const pathParts = Astro.url.pathname.split("/").filter(Boolean);
+const currentLocale = pathParts[0] === "it" ? "it" : "en";
 ---
 
 <footer class="footer">
@@ -22,10 +23,14 @@ const currentLocale = pathParts[0] === 'it' ? 'it' : 'en';
           >
         </div>
         <div>
-          <a class="link" href={localizePath("/policy", currentLocale)}>{t("footer.privacy")}</a>
+          <a class="link" href={localizePath("/policy", currentLocale)}
+            >{t("footer.privacy")}</a
+          >
         </div>
         <div>
-          <a class="link" href={localizePath("/cookie", currentLocale)}>{t("footer.cookie")}</a>
+          <a class="link" href={localizePath("/cookie", currentLocale)}
+            >{t("footer.cookie")}</a
+          >
         </div>
       </div>
       <div class="footer-copyright">
@@ -44,6 +49,9 @@ const currentLocale = pathParts[0] === 'it' ? 'it' : 'en';
           rel="noopener noreferrer"><span class="pi pi-instagram"></span></a
         >
       </div>
+    </div>
+    <div class="footer-switcher">
+      <LanguageSwitcher />
     </div>
   </div>
 </footer>
@@ -64,6 +72,12 @@ const currentLocale = pathParts[0] === 'it' ? 'it' : 'en';
     );
     padding-block: 40px;
     z-index: 2;
+  }
+
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
   }
 
   .footer-wrapper {
@@ -122,6 +136,9 @@ const currentLocale = pathParts[0] === 'it' ? 'it' : 'en';
       grid-area: copyright;
       justify-self: end;
       justify-content: end;
+    }
+    .footer-switcher {
+      display: none;
     }
   }
 
