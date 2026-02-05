@@ -22,7 +22,7 @@
   },
   "section": {
     "hero": {
-      "header": "La tua vera resilienza IT, finalmente unificata",
+      "header": "Your unified source of truth for RPO & RTO",
       "subheader": "Salazar identifica cosa è veramente recuperabile... e cosa si presume lo sia",
       "paragraph": "Unifica il tuo panorama di backup, scopri il tuo vero RPO/RTO ed evidenzia le priorità.",
       "alt-text": "Alcuni mock dell'app Salazar",
@@ -107,7 +107,7 @@
       }
     },
     "features": {
-      "header": "Come lo fa Salazar",
+      "header": "Come funziona Salazar",
       "card": {
         "card-1": {
           "title": "CONNETTI",
@@ -128,7 +128,7 @@
     },
     "form": {
       "header": "Prenota una demo, guarda Salazar in azione",
-      "paragraph": "Una dimostrazione dal vivo in cui il nostro rappresentante ti illustrerà i valori che Salazar offre alle organizzazioni. Non aspettare il prossimo audit o la prossima interruzione. Inizia a gestire la tua strategia di backup oggi stesso."
+      "paragraph": "Una dimostrazione dal vivo con un nostro esperto che ti illustrerà il valore che Salazar può offrire alla tua organizzazione. Non aspettare il prossimo audit o la prossima interruzione di servizio. Inizia a gestire la tua strategia di backup oggi stesso"
     },
     "faq": {
       "header": "Domande frequenti",
