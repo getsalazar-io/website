@@ -116,7 +116,7 @@
         },
         "card-2": {
           "title": "MAPPA",
-          "description": "Traduci le risorse grezze in **servizi aziendali** (applicazioni, dipendenze e catene di ripristino) in modo da visualizzare la **recuperabilità** quando e dove serve.",
+          "description": "Traduci le risorse grezze in **servizi aziendali** (applicazioni e dipendenze) in modo da visualizzare la **recuperabilità** quando e dove serve.",
           "subtitle": "La mappatura automatica delle dipendenze e i modelli di servizio visivi forniscono il contesto del livello di servizio di cui hai bisogno."
         },
         "card-3": {
