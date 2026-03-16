@@ -2,14 +2,28 @@
 import { t } from "i18next";
 import Logo from "../assets/logo_salazar.svg";
 import LanguageSwitcher from "./LanguageSwitcher.astro";
+const webinarLink = "https://sorint.com/webinar-salazar-26-marzo-26/?hsCtaAttrib=209208754592";
 ---
+
+<div class="webinar-banner-fixed">
+  <div class="banner-inner">
+    <div class="banner-text-container">
+      <strong class="banner-badge">{t("home:webinar.badge")}</strong>
+      <span class="sep">|</span>
+      <span class="banner-desc">{t("home:webinar.description")}</span>
+    </div>
+    <a href={webinarLink} class="btn-reg" target="_blank" rel="noopener noreferrer">
+      {t("home:webinar.button")}
+    </a>
+  </div>
+</div>
 
 <header class="header">
   <div class="header-top">
     <div class="logo">
       <Logo height={32} width={130} />
     </div>
-    <p class="header-text">{t("header.text")}</p>
+    <p class="header-text">{t("home:header.text")}</p>
     <div class="header-actions">
       <slot name="button" />
       <div class="header-switcher">
@@ -18,22 +32,86 @@ import LanguageSwitcher from "./LanguageSwitcher.astro";
     </div>
   </div>
 </header>
+
 <style>
+  .webinar-banner-fixed {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background-color: #ffffff;
+    color: #000000;
+    width: 100%;
+    padding: 16px 0;
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  }
+
+  .banner-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .banner-text-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+  }
+
+  .banner-badge {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #000;
+  }
+
+  .banner-desc {
+    font-size: 0.95rem;
+    color: #333;
+  }
+
+  .sep { 
+    margin: 0 5px; 
+    color: #0ea5e9; 
+  }
+
+  .btn-reg {
+    background: #38bdf8;
+    color: white !important;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+  }
+
+  .btn-reg:hover {
+    background: #0ea5e9;
+    transform: scale(1.03);
+  }
+
   header {
     position: sticky;
     max-width: 1280px;
     width: calc(100% - 80px);
-    top: 24px;
+    /* Distanza dal banner su desktop */
+    top: 100px; 
     left: 0;
     right: 0;
-    margin: 0 auto;
-    z-index: 100;
+    margin: 24px auto 0 auto;
+    z-index: 99;
     height: 88px;
     display: flex;
     border-radius: 24px;
     padding: 0 24px;
     isolation: isolate;
   }
+
   header::before {
     content: "";
     position: absolute;
@@ -46,19 +124,18 @@ import LanguageSwitcher from "./LanguageSwitcher.astro";
     border-bottom: 0.025rem solid rgb(68, 68, 68);
   }
 
-  .header-actions {
-    display: flex;
-    gap: 12px;
-  }
-
   .header-top {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: relative;
-    z-index: 1;
   }
+
+  .header-actions {
+    display: flex;
+    gap: 12px;
+  }
+
   .header-text {
     display: none;
   }
@@ -68,15 +145,38 @@ import LanguageSwitcher from "./LanguageSwitcher.astro";
       display: block;
     }
   }
-  @media screen and (min-width: 768px) {
-    header {
-      width: calc(100% - 80px);
-    }
-  }
+
   @media screen and (max-width: 768px) {
+    .banner-inner {
+      flex-direction: column;
+      gap: 12px;
+      text-align: center;
+      padding: 0 15px;
+    }
+
+    .banner-text-container {
+      flex-direction: column; /* FORZA IL CAPO SU MOBILE */
+      gap: 4px;
+    }
+
+    .sep {
+      display: none; /* NASCONDE LA BARRA VERTICALE SU MOBILE */
+    }
+
+    .banner-badge {
+      font-size: 1.1rem;
+    }
+
+    .banner-desc {
+      font-size: 0.9rem;
+      line-height: 1.3;
+    }
+
     header {
       width: calc(100% - 32px);
+      top: 100px; 
     }
+
     .header-switcher {
       display: none;
     }

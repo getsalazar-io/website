@@ -1,4 +1,9 @@
 {
+  "webinar": {
+    "badge": "Webinar Gratuito - 26 Marzo ore 11.00",
+    "description": "Salazar – Your unified source of truth for RPO & RTO",
+    "button": "Register to webinar"
+  },
   "salazar": {
     "title": "Salazar | See your true resilience & real RPO/RTO"
   },
