@@ -116,7 +116,7 @@
         },
         "card-2": {
           "title": "MAP",
-          "description": "Translate raw assets into **business services** ,applications & dependencies, so you see **recoverability** where the business lives.",
+          "description": "Translate raw assets into **business services**, applications & dependencies, so you see **recoverability** where the business lives.",
           "subtitle": "Automatic dependency mapping and visual service models give you the service-level context you need."
         },
         "card-3": {
@@ -128,7 +128,7 @@
     },
     "form": {
       "header": "Book a demo. See Salazar in Action!",
-      "paragraph": "A live demonstration in which our representative will take you through the values Salazar enables for organizations. Don't wait for the next audit—or outage. Start governing your backup strategy today."
+      "paragraph": "A live demonstration where our representative walks you through the value Salazar delivers to organizations. Don't wait for the next audit, or outage. Start governing your backup strategy today."
     },
     "faq": {
       "header": "FAQ",
@@ -143,11 +143,11 @@
         },
         "question-3": {
           "title": "Can Salazar trigger remediation?",
-          "description": "Salazar doesn't remediate, it exposes gaps through APIs. ITSM tools can easily integrate and take actions."
+          "description": "Salazar does not remediate. It exposes gaps through APIs. ITSM tools can easily integrate and take actions."
         },
         "question-4": {
           "title": "Does it support multiple backup vendors?",
-          "description": "Yes. Salazar support several backup software vendors allowing to add new data sources, backup systems, etc.."
+          "description": "Yes. Salazar supports several backup software vendors allowing to add new data sources, backup systems, etc.."
         },
         "question-5": {
           "title": "Does it assess replication?",
@@ -175,7 +175,7 @@
         },
         "item-4": {
           "legend": "Service Group Economic Overview",
-          "tooltip": "Give value and knowing the economic impact"
+          "tooltip": "Highlights value & economical impact"
         },
         "item-5": {
           "legend": "Economic Overview",
@@ -183,7 +183,7 @@
         },
         "item-6": {
           "legend": "Service RTO details",
-          "tooltip": "Recovery time objective always under sight"
+          "tooltip": "Recovery time objective always in sight"
         }
       }
     },
