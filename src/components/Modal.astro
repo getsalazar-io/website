@@ -13,7 +13,7 @@ const { videoUrl } = Astro.props;
     <span class="pi pi-times"></span>
   </button>
   <div class="modal-content">
-    <video controls id="modalVideo">
+    <video controls id="modalVideo" preload="auto" playsinline>
       <source src={videoUrl} type="video/mp4" />
       {t("section.hero.modal-alt")}
     </video>
@@ -42,12 +42,12 @@ const { videoUrl } = Astro.props;
     z-index: 9999;
     opacity: 0;
     transition: opacity 0.3s ease;
-  }
+}
 
   .modal-overlay.active {
     display: flex;
-    opacity: 1;
-  }
+  opacity: 1;
+}
 
   .modal-content {
     width: 90%;
@@ -141,6 +141,9 @@ const { videoUrl } = Astro.props;
       if (header) header.style.display = "none";
       document.body.style.overflow = "hidden";
       scrollDown?.classList.add("hidden");
+
+      video.currentTime = 0;
+      video.play();
     };
 
     const closeModal = () => {
