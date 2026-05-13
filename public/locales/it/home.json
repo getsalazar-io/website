@@ -156,6 +156,14 @@
         "question-6": {
           "title": "Come gestisce l'RTO?",
           "description": "Salazar stima il potenziale RTO in base al tempo di backup completo dell'immagine più lungo della risorsa. Quindi calcola l'RTO per ciascuna risorsa e segnala eventuali disallineamenti con l'RTO dichiarato per i servizi corrispondenti."
+        },
+        "question-7": {
+          "title": "Reportistica personalizzata",
+          "description": "Salazar stima il potenziale RTO in base al tempo di backup completo dell'immagine più lungo della risorsa. Quindi calcola l'RTO per ciascuna risorsa e segnala eventuali disallineamenti con l'RTO dichiarato per i servizi corrispondenti."
+        },
+        "question-8": {
+          "title": "Supporto e consulenza",
+          "description": "Un supporto completo e integrato che garantisce un'implementazione e un utilizzo efficace. Dalla fase di analisi iniziale, alla consulenza aziendale, allo sviluppo di moduli specifici, alla manutenzione e all'assistenza tecnica 24 ore su 24, 7 giorni su 7."
         }
       }
     },
