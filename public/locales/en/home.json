@@ -1,4 +1,9 @@
 {
+  "webinar": {
+    "badge": "Get 30-day free trial + a dedicated deployment team",
+    "description": "Salazar – Your unified source of truth for RPO & RTO",
+    "button": "Request"
+  },
   "salazar": {
     "title": "Salazar | See your true resilience & real RPO/RTO"
   },

@@ -1,4 +1,9 @@
 {
+  "webinar": {
+    "badge": "30 giorni di prova con un team di deployment dedicato",
+    "description": "Salazar – Your unified source of truth for RPO & RTO",
+    "button": "Richiedi"
+  },
   "salazar": {
     "title": "Salazar | Scopri la tua vera resilienza e RPO/RTO reali"
   },
